@@ -19,12 +19,14 @@ function acstarter_scripts() {
 		);
 
 	wp_enqueue_script( 
-			'acstarter-custom', 
+			'custom',
 			get_template_directory_uri() . '/assets/js/custom.js', 
 			array(), '20120206', 
 			true 
 		);
-
+	wp_localize_script( 'custom', 'bellaajaxurl', array(
+		'url' => admin_url( 'admin-ajax.php' )
+	));
 	// wp_enqueue_script( 
 	// 		'acstarter-flexslider', 
 	// 		get_template_directory_uri() . '/js/flexslider.js', 

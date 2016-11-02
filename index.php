@@ -16,41 +16,110 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<?php $args = array(
+				'taxonomy' => "product_cat",
+				'order' => 'ASC',
+				'orderby' => 'term_order',
+				'hide_empty' => 0
+			);
+			$terms = get_terms( $args );
+			if ( ! is_wp_error( $terms ) && is_array( $terms ) && ! empty( $terms ) ):?>
+				<?php $count = count( $terms );
+				for ( $i = 0; $i < $count; $i ++ ):
+					$term = $terms[ $i ]; ?>
+					<?php
+					/**
+					 * woocommerce_before_main_content hook.
+					 *
+					 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+					 * @hooked woocommerce_breadcrumb - 20
+					 */
+					do_action( 'woocommerce_before_main_content' );
+					?>
 
-		<?php
-		if ( have_posts() ) :
+					<a name="<?php echo $term->slug;?>"></a>
+					<h2 class="cat-title"><?php echo $term->name; ?></h2>
 
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
+					<?php
+					/**
+					 * woocommerce_archive_description hook.
+					 *
+					 * @hooked woocommerce_taxonomy_archive_description - 10
+					 * @hooked woocommerce_product_archive_description - 10
+					 */
+					do_action( 'woocommerce_archive_description', $term->term_id );
+					?>
+					<?php $bella_args = array('post_type'=>'product','posts_per_page'=>-1,'tax_query'=>array(array(
+						'taxonomy' => 'product_cat',
+						'field'    => 'id',
+						'terms'    => $term->term_id
+					)));
+					$bella_query = new WP_Query($bella_args); ?>
+					<?php if ( $bella_query->have_posts() ) : ?>
 
-			<?php
-			endif;
+						<?php
+						/**
+						 * woocommerce_before_shop_loop hook.
+						 *
+						 * @hooked woocommerce_result_count - 20
+						 * @hooked woocommerce_catalog_ordering - 30
+						 */
+						do_action( 'woocommerce_before_shop_loop' );
+						?>
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+						<?php woocommerce_product_loop_start(); ?>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+						<?php woocommerce_product_subcategories(); ?>
 
-			endwhile;
+						<?php while ( $bella_query->have_posts() ) : $bella_query->the_post(); ?>
 
-			the_posts_navigation();
+							<?php wc_get_template_part( 'content', 'product' ); ?>
 
-		else :
+						<?php endwhile; // end of the loop. ?>
 
-			get_template_part( 'template-parts/content', 'none' );
+						<?php woocommerce_product_loop_end(); ?>
 
-		endif; ?>
+						<?php
+						/**
+						 * woocommerce_after_shop_loop hook.
+						 *
+						 * @hooked woocommerce_pagination - 10
+						 */
+						do_action( 'woocommerce_after_shop_loop' );
+						?>
 
+					<?php elseif ( ! woocommerce_product_subcategories( array(
+						'before' => woocommerce_product_loop_start( false ),
+						'after'  => woocommerce_product_loop_end( false )
+					) )
+					) : ?>
+
+						<?php wc_get_template( 'loop/no-products-found.php' ); ?>
+
+					<?php endif; ?>
+
+					<?php
+					/**
+					 * woocommerce_after_main_content hook.
+					 *
+					 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+					 */
+					do_action( 'woocommerce_after_main_content' );
+					?>
+
+					<?php
+					/**
+					 * woocommerce_sidebar hook.
+					 *
+					 * @hooked woocommerce_get_sidebar - 10
+					 */
+					do_action( 'woocommerce_sidebar' );
+					?>
+				<?php endfor;//for for categories query
+				?>
+			<?php endif;//if for categories query?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

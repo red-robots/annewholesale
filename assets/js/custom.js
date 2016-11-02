@@ -65,15 +65,18 @@ jQuery(document).ready(function ($) {
 	    return false;
 	});
 
-	/*
-	*
-	*	Nice Page Scroll
-	*
-	------------------------------------*/
-	$(function(){	
-		$("html").niceScroll();
-	});
-	
+
+    function anchor_scroll_capsule(){
+        $(window).imagesLoaded(function() {
+            var hash = window.location.hash;
+            if (hash.length >0) {
+                $('html, body').animate({
+                    scrollTop: $('[name="' + hash.substr(1) + '"]').offset().top
+                }, 500);
+            }
+        });
+    }
+	anchor_scroll_capsule();
 	
 	/*
 	*
@@ -88,5 +91,153 @@ jQuery(document).ready(function ($) {
 	*
 	------------------------------------*/
 	new WOW().init();
+
+
+    //image hover for icons on category/archive pages
+    (function(){
+        $('.image-wrapper').hover(function(){
+            $(this).find('.overlay').css("display","block");
+        },function(){
+            $(this).find('.overlay').css("display","none");
+        });
+    })();
+    //hover for cart icon
+    (function(){
+        $('#socialheader ul li.cart').hover(function() {
+            if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
+                clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+            }
+            $('.head-right .popup-cart').css("display","block");
+        }, function(){
+            var timeout = setTimeout(function(){
+                $('.head-right .popup-cart').css("display","none");
+            },300);
+            $('.head-right .popup-cart').attr("data-timeout",timeout);
+        });
+        $('.head-right .popup-cart').hover(function() {
+            if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
+                clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+            }
+            $('.head-right .popup-cart').css("display","block");
+        }, function(){
+            var timeout = setTimeout(function(){
+                $('.head-right .popup-cart').css("display","none");
+            },300);
+            $('.head-right .popup-cart').attr("data-timeout",timeout);
+        });
+
+        $('.quickview').colorbox({
+            rel:'gal',
+            inline: true,
+            width: '90%',
+            maxWidth: '960px',
+        });
+    })();
+    //function to add items to cart
+    (function(){
+        $('form.cart').find('button[type=submit]').on('click',function(e){
+            e.preventDefault();
+            var $form = $(this).parents('form.cart').eq(0);
+            var id = $form.find('input[name="add-to-cart"]').attr('value');
+            var qty = $form.find('input[name="quantity"]').attr('value');
+            //add to cart
+            jQuery.post(
+                bellaajaxurl.url,
+                {
+                    'action': 'bella_add_cart',
+                    'id': id,
+                    'qty':qty,
+                },
+                function(response){
+                    if(Number($(response).find("cart").attr("id"))===1){
+                        //update cart popup
+                        jQuery.post(
+                            bellaajaxurl.url,
+                            {
+                                'action': 'bella_get_cart',
+                                'data':'',
+                            },
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $('.popup-cart').html($text);
+
+                                }
+                            }
+                        );
+                        //update cart popup
+                        jQuery.post(
+                            bellaajaxurl.url,
+                            {
+                                'action': 'bella_get_cart_count',
+                                'data':'',
+                            },
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $('#socialheader ul li.cart a').html($text);
+
+                                }
+                            }
+                        );
+                        //invoke checkout popup
+                        jQuery.post(
+                            bellaajaxurl.url,
+                            {
+                                'action': 'bella_get_checkout_popup',
+                                'id':id,
+                            },
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $.colorbox({
+                                        width: '90%',
+                                        maxWidth: '600px',
+                                        height: '120%',
+                                        html:$text,
+                                    });
+                                    $('.popup-checkout .continue.button').on('click',function(e){
+                                        e.preventDefault();
+                                        $.colorbox.close();
+                                    });
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+        });
+    })();
+
+    (function(){
+        $('.product-tabs .top-bar .title').eq(0).addClass("active");
+        $('.product-tabs .top-bar .title').on('click',function(){
+            var $this = $(this);
+            var type = $this.attr("data-type");
+            $('.product-tabs .top-bar .title').filter(".active").removeClass("active");
+            $this.addClass("active");
+            $('.product-tabs .viewport .copy').each(function(){
+                var $this = $(this);
+                if($this.attr('data-type')===type){
+                    $this.css("display","block");
+                } else {
+                    $this.css("display","none");
+                }
+            });
+        });
+    })();
+
+    //remove Tooltips
+    (function(){
+        var saved_title;
+        $('img').hover(function(){
+            var $this = $(this);
+            saved_title=$this.attr("title")===undefined?"":$this.attr("title");
+            $this.attr("title","");
+        },function(){
+            var $this = $(this);
+            $this.attr("title",saved_title);
+        });
+    })();
 
 });// END #####################################    END

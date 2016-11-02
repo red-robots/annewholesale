@@ -68,3 +68,8 @@ require get_template_directory() . '/inc/block-all-registration-and-comments.php
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load woocommerce functions.
+ */
+require get_template_directory() . '/inc/woo-functions.php';

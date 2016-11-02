@@ -22,26 +22,110 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'acstarter' ); ?></a>
-
 	<header id="masthead" class="site-header" role="banner">
-		<div class="wrapper">
-			
-			<?php if(is_home()) { ?>
-	            <h1 class="logo">
-	            <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
-	            </h1>
-	        <?php } else { ?>
-	            <div class="logo">
-	            <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
-	            </div>
-	        <?php } ?>
 
-			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'acstarter' ); ?></button>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-			</nav><!-- #site-navigation -->
-	</div><!-- wrapper -->
+		<?php if(is_home()) { ?>
+			<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+		<?php } else { ?>
+			<div class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></div>
+		<?php } ?>
+
+
+		<div class="head-right">
+			<div id="socialheader">
+				<ul>
+					<li class="cart"><a href="<?php bloginfo('url'); ?>/cart"><?php echo WC()->cart->get_cart_contents_count();?></a></li>
+				</ul>
+			</div><!-- social header -->
+			<div id="sb-search" class="sb-search">
+				<?php get_search_form(); ?>
+			</div><!-- search -->
+			<?php $account_text = get_field("account_text","option");
+			$account_link = get_permalink();
+			if($account_text&&$account_link):?>
+				<div class="account-link">
+					<a href="<?php echo $account_link;?>"><?php echo $account_text;?></a>
+				</div><!--.account-link-->
+			<?php endif;?>
+			<div class="popup-cart">
+				<?php do_action( 'woocommerce_before_cart_contents' ); ?>
+				<?php
+				foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+					$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+					$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+
+					if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) { ?>
+						<div class="product-box">
+							<div class="product-thumbnail">
+								<?php	$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+
+								if ( ! $_product->is_visible() ) {
+									echo $thumbnail;
+								} else {
+									printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $thumbnail );
+								}
+								?>
+							</div><!--.product-thumbnail-->
+							<div class="product-info">
+								<div class="product-name">
+									<?php
+									if ( ! $_product->is_visible() ) {
+										echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ) . '&nbsp;';
+									} else {
+										echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s </a>', esc_url( $_product->get_permalink( $cart_item ) ), $_product->get_title() ), $cart_item, $cart_item_key );
+									} ?>
+								</div><!--.product-name-->
+								<div class="product-quantity">
+									<?php echo "Quantity: ".$cart_item['quantity'];?>
+								</div><!--.product-quantity-->
+								<div class="product-price">
+									<?php
+									echo "Price: ".apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
+									?>
+								</div><!--.product-price-->
+							</div><!--.product-info-->
+						</div><!--.product-box-->
+						<?php
+					}
+				}
+
+				do_action( 'woocommerce_cart_contents' );
+				?>
+				<?php do_action( 'woocommerce_after_cart_contents' ); ?>
+				<div class="totals-checkout">
+					<div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div><!--.subtotal-->
+					<div class="checkout button">Checkout<a class="surrounding" href="<?php echo WC()->cart->get_checkout_url() ?>"></a></div><!--.checkout .button-->
+				</div><!--.totals-checkout-->
+			</div><!--.popup-cart-->
+		</div><!-- head right -->
+
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle"><?php _e( 'Navigation', 'twentytwelve' ); ?></h3>
+			<?php $args = array(
+				'taxonomy'   => "product_cat",
+				'order'      => 'ASC',
+				'orderby'    => 'term_order',
+				'hide_empty' => 0
+			);
+			$category_name = get_query_var( "category_name", null );
+			$terms      = get_terms( $args );
+			if ( ! is_wp_error( $terms ) && is_array( $terms ) && ! empty( $terms ) ): ?>
+					<ul>
+						<?php for($i=0;$i<count($terms);$i++):
+							$term = $terms[$i];?>
+							<li>
+								<a <?php if(($category_name===null ||  empty( $category_name )) && $i===0) echo 'class="active"';?>
+									href="<?php if(!is_home())
+											echo trailingslashit(bloginfo('url'));
+									echo '#'.$term->slug;?>"><?php echo $term->name; ?></a>
+							</li>
+						<?php endfor; ?>
+					</ul>
+			<?php endif;//endif ?>
+
+		</nav><!-- #site-navigation -->
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content wrapper">

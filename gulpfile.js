@@ -24,8 +24,8 @@
   * Edit the variables as per your project requirements.
   */
 
-var project             = 'AC-Starter'; // Project Name.
-var projecturl          = 'http://localhost:8888/austincrane/ACStarter/'; // Project URL. Could be something like localhost:8888.
+var project             = 'DAS'; // Project Name.
+var projecturl          = 'http://localhost:80/das'; // Project URL. Could be something like localhost:8888.
 
 
 var styleSRC            = './assets/sass/style.scss'; // Path to main .scss file.
@@ -94,11 +94,14 @@ var imagemin     = require('gulp-imagemin'); // Minify PNG, JPEG, GIF and SVG im
 // Utility related plugins.
 var rename       = require('gulp-rename'); // Renames files E.g. style.css -> style.min.css
 var sourcemaps   = require('gulp-sourcemaps'); // Maps code in a compressed file (E.g. style.css) back to it’s original position in a source file (E.g. structure.scss, which was later combined with other css files to generate style.css)
-var notify       = require('gulp-notify'); // Sends message notification to you
-var browserSync  = require('browser-sync').create(); // Reloads browser and injects CSS. Time-saving synchronised browser testing.
-var reload       = browserSync.reload; // For manual browser reload.
-
-
+var notify       = require('gulp-notify'); // Sends message notification to you 
+//var browserSync  = require('browser-sync').create(); // Reloads browser and injects CSS. Time-saving synchronised browser testing.
+//var reload       = browserSync.reload; // For manual browser reload.
+/*
+gulp.task('browser-sync', function(){
+	browserSync.init({proxy:'127.0.0.1:80/das'});
+});
+*/
 /**
  * Task: `browser-sync`.
  *
@@ -110,29 +113,13 @@ var reload       = browserSync.reload; // For manual browser reload.
  * 		3. You may define a custom port
  * 		4. You may want to stop the browser from openning automatically
  */
- gulp.task( 'browser-sync', function() {
+/* gulp.task( 'browser-sync', function() {
  	browserSync.init( {
-
- 		// For more options
- 		// @link http://www.browsersync.io/docs/options/
-
- 		// Project URL.
  		proxy: projecturl,
-
- 		// Stop the browser from automatically opening.
- 		open: false,
-
- 		// Inject CSS changes.
- 		// Commnet it to reload browser for every CSS change.
- 		// injectChanges: true,
-
- 		// Use a specific port (instead of the one auto-detected by Browsersync).
- 		// port: 7000,
-
+ 		reloadDelay: 10
  	} );
  });
-
-
+*/
 /**
  * Task: `styles`.
  *
@@ -172,8 +159,8 @@ gulp.task('styles', function () {
 			maxLineLen: 10
 		}))
 		.pipe( gulp.dest( styleDestination ) )
-		.pipe( browserSync.stream() )
-		.pipe( notify( { message: 'TASK: "styles" Completed!', onLast: true } ) )
+//		.pipe( browserSync.stream() )
+		.pipe( notify( { message: 'TASK: "styles" Completed!', onLast: true } ) );
 });
 
 
@@ -269,8 +256,8 @@ gulp.task( 'images', function() {
   *
   * Watches for file changes and runs specific tasks.
   */
- gulp.task( 'default', ['styles', 'vendorsJs', 'customJS', 'images', 'browser-sync'], function () {
- 	gulp.watch( styleWatchFiles, [ 'styles' ] );
- 	gulp.watch( vendorJSWatchFiles, [ 'vendorsJs', reload ]  );
- 	gulp.watch( customJSWatchFiles, [ 'customJS', reload ]  );
+ gulp.task( 'default', ['styles', 'vendorsJs', 'customJS', 'images'/*, 'browser-sync'*/], function () {
+ 	gulp.watch( styleWatchFiles, [ 'styles']);//, reload]);
+ 	gulp.watch( vendorJSWatchFiles, [ 'vendorsJs']);//, reload ]  );
+ 	gulp.watch( customJSWatchFiles, [ 'customJS']);//, reload ]  );
  });

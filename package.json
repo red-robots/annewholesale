@@ -1,15 +1,10 @@
 {
-  "name"      : "AC-Starter",
+  "name"      : "AnneWholesale",
   "author"    : "accrane",
   "version"   : "1.0.0",
   "license"   : "GPL-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/accrane/AC-Starter"
-  },
   "dependencies"   : {},
   "devDependencies": {
-    "browser-sync": "^2.11.1",
     "gulp"                      : "^3.8.11",
     "gulp-autoprefixer"         : "^3.1.0",
     "gulp-concat"               : "^2.5.2",

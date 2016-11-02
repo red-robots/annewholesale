@@ -70,9 +70,11 @@ jQuery(document).ready(function ($) {
         $(window).imagesLoaded(function() {
             var hash = window.location.hash;
             if (hash.length >0) {
-                $('html, body').animate({
-                    scrollTop: $('[name="' + hash.substr(1) + '"]').offset().top
-                }, 500);
+                if($('[name="' + hash.substr(1) + '"]').length>0) {
+                    $('html, body').animate({
+                        scrollTop: $('[name="' + hash.substr(1) + '"]').offset().top
+                    }, 500);
+                }
             }
         });
     }

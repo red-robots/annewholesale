@@ -6,6 +6,11 @@
  * Time: 3:08 PM
  */
 
+// Disable Related Products
+function wc_remove_related_products( $args ) {
+	return array();
+}
+add_filter('woocommerce_related_products_args','wc_remove_related_products', 10);
 // Show another pic instead of featured iamges
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 

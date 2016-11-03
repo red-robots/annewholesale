@@ -7,9 +7,53 @@
 }
 
 .template-index {
-  .product {
-    h3 {
-      text-align: center;
+  #content {
+    .product {
+      h3 {
+        text-align: center;
+      }
+      .price-description {
+        color: rgba(150,167,166,1);
+        text-transform:uppercase;
+        font-weight:300;
+        font-size: 14px;
+        line-height: 1.6;
+        font-family: FuturaPT-Light;
+        letter-spacing: 1px;
+        text-align: center;
+        border: 1px solid #8f92a3;
+        padding: 10px;
+        width: 100%;
+        margin: 10px 0;
+      }
+      form.cart {
+        div.quantity {
+          float: left;
+          margin: 0;
+        }
+        .button {
+          color: #ffffff;
+          /*background-color: rgba(109,153,142,1);*/
+          background-color: rgba(150, 167, 166, 1);
+          transition: background-color 0.3s ease;
+          border: none;
+          text-shadow: none;
+          border-radius: 0px;
+          width: auto;
+          display: inline-block;
+          font-family: FuturaPT-Light;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 18px;
+          float: right;
+          margin: 0 0 0 20px;
+          margin-top: 0;
+          padding: 16px 20px;
+          &:hover {
+            background-color: rgba(150, 167, 166, .7);
+          }
+        }
+      }
     }
   }
 }
@@ -2630,7 +2674,7 @@ div.product .product_title, #content div.product .product_title, .woocommerce-pa
   line-height: 45px;
   letter-spacing: 1px;
 }
-div.product form.cart .button, #content div.product form.cart .button, .woocommerce-page div.product form.cart .button, .woocommerce-page #content div.product form.cart .button {
+.woocommerce div.product form.cart .button, #content div.product form.cart .button, .woocommerce-page div.product form.cart .button, .woocommerce-page #content div.product form.cart .button {
   color: #ffffff;
   /*background-color: rgba(109,153,142,1);*/
   background-color: rgba(150,167,166,1);

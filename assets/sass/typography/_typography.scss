@@ -12,3 +12,44 @@ textarea {
 @import "headings";
 
 @import "copy";
+
+@font-face {font-family: 'FuturaPT-Light';src: url('fonts/2E4E03_0_0.eot');src: url('fonts/2E4E03_0_0.eot?#iefix') format('embedded-opentype'),url('fonts/2E4E03_0_0.woff2') format('woff2'),url('fonts/2E4E03_0_0.woff') format('woff'),url('fonts/2E4E03_0_0.ttf') format('truetype');}
+
+/* Webfont: NeutraText-BookAlt */@font-face {
+  font-family: 'NeutraTextBookAlt';
+  src: url('fonts/NeutraText-BookAlt.eot'); /* IE9 Compat Modes */
+  src: url('fonts/NeutraText-BookAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/NeutraText-BookAlt.woff') format('woff'), /* Modern Browsers */
+  url('fonts/NeutraText-BookAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('fonts/NeutraText-BookAlt.svg#NeutraText-BookAlt') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Webfont: NeutraText-LightAlt */@font-face {
+  font-family: 'NeutraTextLightAlt';
+  src: url('fonts/NeutraText-LightAlt.eot'); /* IE9 Compat Modes */
+  src: url('fonts/NeutraText-LightAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/NeutraText-LightAlt.woff') format('woff'), /* Modern Browsers */
+  url('fonts/NeutraText-LightAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('fonts/NeutraText-LightAlt.svg#NeutraText-LightAlt') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+/* Webfont: NeutraText-DemiAlt */@font-face {
+  font-family: 'NeutraTextDemiAlt';
+  src: url('fonts/NeutraText-DemiAlt.eot'); /* IE9 Compat Modes */
+  src: url('fonts/NeutraText-DemiAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('fonts/NeutraText-DemiAlt.woff') format('woff'), /* Modern Browsers */
+  url('fonts/NeutraText-DemiAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('fonts/NeutraText-DemiAlt.svg#NeutraText-DemiAlt') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {font-family: 'FuturaPT-BookObl';src: url('fonts/2E4E03_1_0.eot');src: url('fonts/2E4E03_1_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2E4E03_1_0.woff2') format('woff2'),url('fonts/2E4E03_1_0.woff') format('woff'),url('fonts/2E4E03_1_0.ttf') format('truetype');}
+
+
+@font-face {font-family: 'FuturaPT-Medium';src: url('fonts/2E4E03_2_0.eot');src: url('fonts/2E4E03_2_0.eot?#iefix') format('embedded-opentype'),url('fonts/2E4E03_2_0.woff2') format('woff2'),url('fonts/2E4E03_2_0.woff') format('woff'),url('fonts/2E4E03_2_0.ttf') format('truetype');}

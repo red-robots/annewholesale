@@ -11,8 +11,6 @@
 
 ?>
 
-	</div><!-- #content -->
-
 <footer id="colophon" role="contentinfo">
 	<div class="footer-inside">
 		<p class="social banner-text">Get Social</p>

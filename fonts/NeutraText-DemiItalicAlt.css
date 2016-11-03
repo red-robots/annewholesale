@@ -1,0 +1,12 @@
+/* Webfont: NeutraText-DemiItalicAlt */@font-face {
+    font-family: 'NeutraTextLightAlt';
+    src: url('NeutraText-DemiItalicAlt.eot'); /* IE9 Compat Modes */
+    src: url('NeutraText-DemiItalicAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('NeutraText-DemiItalicAlt.woff') format('woff'), /* Modern Browsers */
+         url('NeutraText-DemiItalicAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('NeutraText-DemiItalicAlt.svg#NeutraText-DemiItalicAlt') format('svg'); /* Legacy iOS */
+    font-style: italic;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+

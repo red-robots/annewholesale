@@ -102,30 +102,7 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<h3 class="menu-toggle"><?php _e( 'Navigation', 'twentytwelve' ); ?></h3>
-			<?php $args = array(
-				'taxonomy'   => "product_cat",
-				'order'      => 'ASC',
-				'orderby'    => 'term_order',
-				'hide_empty' => 0
-			);
-			$category_name = get_query_var( "category_name", null );
-			$terms      = get_terms( $args );
-			if ( ! is_wp_error( $terms ) && is_array( $terms ) && ! empty( $terms ) ): ?>
-					<ul>
-						<?php for($i=0;$i<count($terms);$i++):
-							$term = $terms[$i];?>
-							<li>
-								<a <?php if(($category_name===null ||  empty( $category_name )) && $i===0) echo 'class="active"';?>
-									href="<?php if(!is_home())
-											echo trailingslashit(bloginfo('url'));
-									echo '#'.$term->slug;?>"><?php echo $term->name; ?></a>
-							</li>
-						<?php endfor; ?>
-					</ul>
-			<?php endif;//endif ?>
-
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 
 	</header><!-- #masthead -->
-
-	<div id="content" class="site-content wrapper">

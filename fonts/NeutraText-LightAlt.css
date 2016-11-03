@@ -1,0 +1,12 @@
+/* Webfont: NeutraText-LightAlt */@font-face {
+    font-family: 'NeutraTextLightAlt';
+    src: url('NeutraText-LightAlt.eot'); /* IE9 Compat Modes */
+    src: url('NeutraText-LightAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('NeutraText-LightAlt.woff') format('woff'), /* Modern Browsers */
+         url('NeutraText-LightAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('NeutraText-LightAlt.svg#NeutraText-LightAlt') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

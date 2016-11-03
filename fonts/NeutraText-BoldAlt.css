@@ -1,0 +1,12 @@
+/* Webfont: NeutraText-BoldAlt */@font-face {
+    font-family: 'NeutraTextAlt';
+    src: url('NeutraText-BoldAlt.eot'); /* IE9 Compat Modes */
+    src: url('NeutraText-BoldAlt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('NeutraText-BoldAlt.woff') format('woff'), /* Modern Browsers */
+         url('NeutraText-BoldAlt.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('NeutraText-BoldAlt.svg#NeutraText-BoldAlt') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+

@@ -1374,11 +1374,29 @@ html[xmlns] .flexslider .slides{display:block}
 }.widget{margin:0 0 1.5em}
 .widget select{max-width:100%}
 .clear-bottom:after{content:"";display:block;clear:both}
-.template-index #content .product h3{text-align:center}
+#cboxContent .woocommerce div.product div.images{float:none;width:100%;margin-bottom:2em}
+@media screen and (min-width:600px){#cboxContent .woocommerce div.product div.images{float:left;width:48%}
+}#cboxContent .woocommerce div.product .entry-summary{float:none;width:100%;margin-bottom:2em}
+@media screen and (min-width:600px){#cboxContent .woocommerce div.product .entry-summary{float:right;width:48%}
+}.woocommerce #main #content div.product div.images{float:none;width:100%;margin-bottom:2em}
+@media screen and (min-width:600px){.woocommerce #main #content div.product div.images{float:left;width:48%}
+}.woocommerce #main #content div.product .entry-summary{float:none;width:100%;margin-bottom:2em}
+@media screen and (min-width:600px){.woocommerce #main #content div.product .entry-summary{float:right;width:48%}
+}.template-index #content .product{float:none;margin:0 0 20px 0;width:100%;padding:0;position:relative}
+@media screen and (min-width:600px){.template-index #content .product{width:48%;float:left;margin:0 0 2.992em 0}
+.template-index #content .product:nth-child(even){float:right}
+}@media screen and (min-width:900px){.template-index #content .product{float:left;margin:0 3.8% 2.992em 0;width:22.05%}
+.template-index #content .product:nth-child(even){float:left}
+}.template-index #content .product h3{text-align:center}
+.template-index #content .product .image-wrapper .overlay{text-transform:uppercase;text-align:center;background-color:rgba(150,167,166,0.8);width:100%;bottom:0;left:0;position:absolute;display:none;color:white;font-size:16px;font-family:FuturaPT-Light;font-weight:300}
+.template-index #content .product .image-wrapper .overlay a.surrounding{padding:20px 0;color:white;display:block}
+.template-index #content .product .image-wrapper .overlay a.surrounding:hover{color:white}
 .template-index #content .product .price-description{color:#96a7a6;text-transform:uppercase;font-weight:300;font-size:14px;line-height:1.6;font-family:FuturaPT-Light;letter-spacing:1px;text-align:center;border:1px solid #8f92a3;padding:10px;width:100%;margin:10px 0}
+.template-index #content .product form.cart:after{content:'';clear:both;display:block}
 .template-index #content .product form.cart div.quantity{float:left;margin:0}
-.template-index #content .product form.cart .button{color:#fff;background-color:#96a7a6;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;border:0;text-shadow:none;border-radius:0;width:auto;display:inline-block;font-family:FuturaPT-Light;font-weight:600;text-transform:uppercase;font-size:18px;float:right;margin:0 0 0 20px;margin-top:0;padding:16px 20px}
-.template-index #content .product form.cart .button:hover{background-color:rgba(150,167,166,0.7)}
+.template-index #content .product form.cart .button{color:#fff;background-color:#96a7a6;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;border:0;text-shadow:none;border-radius:0;width:auto;display:inline-block;font-family:FuturaPT-Light;font-weight:600;text-transform:uppercase;font-size:18px;float:right;margin:0;margin-top:0;padding:16px 20px}
+@media screen and (min-width:900px) and (max-width:1039px){.template-index #content .product form.cart .button{padding:16px 5px}
+}.template-index #content .product form.cart .button:hover{background-color:rgba(150,167,166,0.7)}
 .archive-title,.page-title,.widget-title,.entry-content th,.comment-content th,.cat-title{font-size:11px;font-weight:bold;text-transform:uppercase;color:#96a7a6;font-weight:300}
 article.format-quote footer.entry-meta,article.format-link footer.entry-meta,article.format-status footer.entry-meta{font-size:11px;line-height:2.181818182}
 button,input,textarea{border:1px solid #ccc;border-radius:3px;font-family:inherit;padding:6px}
@@ -1496,9 +1514,6 @@ a.surrounding{display:block}
 .return-button.wrapper .return-to-cat.button:hover{background-color:rgba(150,167,166,0.7)}
 .return-button.wrapper .return-to-cat.button a{text-decoration:none;color:white}
 .return-button.wrapper .return-to-cat.button a:hover{color:white}
-.image-wrapper .overlay{text-transform:uppercase;text-align:center;background-color:rgba(150,167,166,0.8);width:100%;bottom:0;left:0;padding:20px 0;position:absolute;display:none;color:white;font-size:16px;font-family:FuturaPT-Light;font-weight:300}
-.image-wrapper .overlay a{color:white;display:block}
-.image-wrapper .overlay a:hover{color:white}
 .widget-area{margin:24px 0 0}
 .clickimage{margin:20px auto;width:100%;text-align:center}
 .clickimage a{padding:10px 0 10px 0;color:#fff;background-color:#6e998e;border:0;text-shadow:none;background:#6e998e;border-radius:0;clear:both;width:100%;font-weight:300;font-size:16px;text-decoration:none;text-align:center;display:block}

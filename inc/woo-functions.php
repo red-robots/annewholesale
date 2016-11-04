@@ -6,7 +6,11 @@
  * Time: 3:08 PM
  */
 
-
+add_filter( 'woocommerce_enqueue_styles', 'bella_dequeue_styles' );
+function bella_dequeue_styles( $enqueue_styles ) {
+	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+	return $enqueue_styles;
+}
 
 add_action( 'init', 'bella_remove_the_archive_add_to_cart' );
 function bella_remove_the_archive_add_to_cart() {

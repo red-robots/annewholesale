@@ -5,7 +5,46 @@
     clear: both;
   }
 }
-
+header {
+  > .row-1 {
+    @include flexbox;
+    @include flexbox-align-content(stretch);
+    @include flexbox-justify(space-between);
+    @include flexbox-align-items(stretch);
+    @include flexbox-wrap(wrap);
+    @media screen and (min-width: 600px) {
+      @include flexbox-wrap(nowrap);
+    }
+    > .column-1 {
+      width: 100%;
+      text-align: center;
+      @media screen and (min-width: 600px) {
+        width: 30%;
+      }
+    }
+    > .column-2.logo {
+      margin: 15px auto;
+      display: block;
+      width: 100%;
+      @media screen and (min-width: 350px) {
+        width: 80%;
+      }
+      @media screen and (min-width: 600px) {
+        width: 40%;
+      }
+      a {
+        display: block;
+      }
+    }
+    > .column-3 {
+      position: relative;
+      width: 100%;
+      @media screen and (min-width: 600px) {
+        width: 30%;
+      }
+    }
+  }
+}
 #cboxContent {
   .woocommerce {
     div.product {
@@ -1234,25 +1273,7 @@ p.currentTextHolder,
 
 /* Logo */
 /* Logo */
-.logo, h1.logo {
-  background-image: url(images/logo.png);
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  z-index: 1;
-  margin: 15px auto;
-  display: block;
-  /*background-size: 580px 56px;*/
-  background-size: cover;
-  width: 300px;
-  height: 59px;
-}
 
-.logo a, h1.logo a {
-  width: 300px;
-  height: 59px;
-  display: block;
-  text-indent: -9000px;
-}
 
 /* = Giving Back
 -------------------------------------------------------------- */

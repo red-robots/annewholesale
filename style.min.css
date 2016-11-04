@@ -1374,7 +1374,17 @@ html[xmlns] .flexslider .slides{display:block}
 }.widget{margin:0 0 1.5em}
 .widget select{max-width:100%}
 .clear-bottom:after{content:"";display:block;clear:both}
-#cboxContent .woocommerce div.product div.images{float:none;width:100%;margin-bottom:2em}
+header>.row-1{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-align-content:stretch;-ms-flex-line-pack:stretch;align-content:stretch;-webkit-justify-content:space-between;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:stretch;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}
+@media screen and (min-width:600px){header>.row-1{-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap}
+}header>.row-1>.column-1{width:100%;text-align:center}
+@media screen and (min-width:600px){header>.row-1>.column-1{width:30%}
+}header>.row-1>.column-2.logo{margin:15px auto;display:block;width:100%}
+@media screen and (min-width:350px){header>.row-1>.column-2.logo{width:80%}
+}@media screen and (min-width:600px){header>.row-1>.column-2.logo{width:40%}
+}header>.row-1>.column-2.logo a{display:block}
+header>.row-1>.column-3{position:relative;width:100%}
+@media screen and (min-width:600px){header>.row-1>.column-3{width:30%}
+}#cboxContent .woocommerce div.product div.images{float:none;width:100%;margin-bottom:2em}
 @media screen and (min-width:600px){#cboxContent .woocommerce div.product div.images{float:left;width:48%}
 }#cboxContent .woocommerce div.product .entry-summary{float:none;width:100%;margin-bottom:2em}
 @media screen and (min-width:600px){#cboxContent .woocommerce div.product .entry-summary{float:right;width:48%}
@@ -1536,8 +1546,6 @@ a.surrounding{display:block}
 #socialfooter .instagram a:hover{background-position:-70px -32px}
 #socialfooter .pintrest a{width:32px;background-position:-105px 0;position:relative}
 #socialfooter .pintrest a:hover{background-position:-105px -32px}
-.logo,h1.logo{background-image:url(images/logo.png);background-repeat:no-repeat;background-position:0 0;z-index:1;margin:15px auto;display:block;background-size:cover;width:300px;height:59px}
-.logo a,h1.logo a{width:300px;height:59px;display:block;text-indent:-9000px}
 .giving-box{width:100%;position:relative;z-index:50;margin:10px auto}
 .giving-box a{display:block;text-decoration:none;color:#c5724e}
 .giving-box img{width:100%;height:100%}

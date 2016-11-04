@@ -106,26 +106,26 @@ jQuery(document).ready(function ($) {
     //hover for cart icon
     (function(){
         $('#socialheader ul li.cart').hover(function() {
-            if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
-                clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+            if($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")!==undefined){
+                clearTimeout(Number($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")));
             }
-            $('.head-right .popup-cart').css("display","block");
+            $('#masthead > .row-1 > .column-3 .popup-cart').css("display","block");
         }, function(){
             var timeout = setTimeout(function(){
-                $('.head-right .popup-cart').css("display","none");
+                $('#masthead > .row-1 > .column-3 .popup-cart').css("display","none");
             },300);
-            $('.head-right .popup-cart').attr("data-timeout",timeout);
+            $('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout",timeout);
         });
-        $('.head-right .popup-cart').hover(function() {
-            if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
-                clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+        $('#masthead > .row-1 > .column-3 .popup-cart').hover(function() {
+            if($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")!==undefined){
+                clearTimeout(Number($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")));
             }
-            $('.head-right .popup-cart').css("display","block");
+            $('#masthead > .row-1 > .column-3 .popup-cart').css("display","block");
         }, function(){
             var timeout = setTimeout(function(){
-                $('.head-right .popup-cart').css("display","none");
+                $('#masthead > .row-1 > .column-3 .popup-cart').css("display","none");
             },300);
-            $('.head-right .popup-cart').attr("data-timeout",timeout);
+            $('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout",timeout);
         });
 
         $('.quickview').colorbox({
@@ -246,10 +246,7 @@ jQuery(document).ready(function ($) {
 //__________________________________________
 
     $( '.search-icon' ).click(function() {
-        $( 'input.search-field' ).toggle( 100, function() {
-            // Animation complete.
-            //$('input.search-field').animate({"width":"0px"}, 100);
-        });
+        $( 'input.search-field' ).toggle( 100);
     });
     /**
      * navigation.js

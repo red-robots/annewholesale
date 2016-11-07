@@ -13,7 +13,9 @@ function acc_social_links() {
 	$twitterlink = get_field('twitter_link', 'option');
 	$linkedinlink = get_field('linkedin_link', 'option');
 	$instagramlink = get_field('instagram_link', 'option');
+	$pintrestlink = get_field('pintrest_link', 'option');
 	$googlelink = get_field('google_link', 'option');
+	$houzzlink = get_field('houzz_link', 'option');
 	
 	$facebook = array(
 		'class' => 'facebook',
@@ -40,6 +42,16 @@ function acc_social_links() {
 		'link' => $googlelink,
 		'text' => 'Follow us on Google',
 	);
+	$pintrest = array(
+		'class' => 'pintrest',
+		'link' => $pintrestlink,
+		'text' => 'Join us on Pintrest',
+	);
+	$houzz = array(
+		'class' => 'houzz',
+		'link' => $houzzlink,
+		'text' => 'Follow us on Houzz',
+	);
 	// Add Chosen Social media to the list
 	if($facebooklink != "") {
 		$socials[] = $facebook;
@@ -56,13 +68,15 @@ function acc_social_links() {
 	if($googlelink != "") {
 		$socials[] = $google;
 	}
-	// See what data we have.
-	/*echo '<pre>';
-	print_r($socials);
-	echo '</pre>';*/
-	
+	if($pintrestlink != "") {
+		$socials[] = $pintrest;
+	}
+	if($houzzlink != "") {
+		$socials[] = $houzz;
+	}
 	// count for width
 	$socialcount = count($socials);
+	$snumber = '';
 	if($socialcount == 1) {
 		$snumber = 'socialone';	
 	} elseif($socialcount == 2) {
@@ -74,7 +88,9 @@ function acc_social_links() {
 	} elseif($socialcount == 5) {
 		$snumber = 'socialfive';	
 	} elseif($socialcount == 6) {
-		$snumber = 'socialsix';	
+		$snumber = 'socialsix';
+	} elseif($socialcount == 7) {
+		$snumber = 'socialseven';
 	}
 	
 	echo '<div id="sociallinks" class="' . $snumber . '">';

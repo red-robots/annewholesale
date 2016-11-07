@@ -41,7 +41,7 @@
 					</div>
 					<span class="search-icon"></span>
 					<?php $account_text = get_field( "account_text", "option" );
-					$account_link       = get_permalink( 8 );
+					$account_link       = get_field( "account_link", "option" );
 					if ( $account_text && $account_link ):?>
 						<div class="account-link">
 							<a href="<?php echo $account_link; ?>"><?php echo $account_text; ?></a>

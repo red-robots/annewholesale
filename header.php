@@ -23,7 +23,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<header id="masthead" class="site-header" role="banner">
-		<div class="row-1">
+		<div class="row-1 clear-bottom">
 			<div class="column-1">
 				Wholesale
 			</div><!--.head-left-->
@@ -35,21 +35,19 @@
 							src="<?php echo get_template_directory_uri() . '/images/logo.png'; ?>" alt="logo"></a></div>
 			<?php } ?>
 			<div class="column-3">
-				<?php $account_text = get_field( "account_text", "option" );
-				$account_link       = get_permalink();
-				if ( $account_text && $account_link ):?>
-					<div class="account-link">
-						<a href="<?php echo $account_link; ?>"><?php echo $account_text; ?></a>
-					</div><!--.account-link-->
-				<?php endif; ?>
-				<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-				<div id="socialheader">
-					<ul>
-						<li class="cart"><a
-								href="<?php bloginfo( 'url' ); ?>/cart"><?php echo WC()->cart->get_cart_contents_count(); ?></a>
-						</li>
-					</ul>
-				</div><!-- social header -->
+				<div class="wrapper">
+					<div class="cart">
+						<a href="<?php bloginfo( 'url' ); ?>/cart"><?php echo WC()->cart->get_cart_contents_count(); ?></a>
+					</div>
+					<span class="search-icon"></span>
+					<?php $account_text = get_field( "account_text", "option" );
+					$account_link       = get_permalink( 8 );
+					if ( $account_text && $account_link ):?>
+						<div class="account-link">
+							<a href="<?php echo $account_link; ?>"><?php echo $account_text; ?></a>
+						</div><!--.account-link-->
+					<?php endif; ?>
+				</div><!--.wrapper-->
 				<div class="popup-cart">
 					<?php do_action( 'woocommerce_before_cart_contents' ); ?>
 					<?php
@@ -105,7 +103,7 @@
 				</div><!--.popup-cart-->
 			</div><!-- head right -->
 		</div><!--.row-1-->
-		<div class="row-2">
+		<div class="row-2 clear-bottom">
 			<div id="sb-search" class="sb-search">
 				<?php get_search_form(); ?>
 			</div><!-- search -->

@@ -105,7 +105,7 @@ jQuery(document).ready(function ($) {
     })();
     //hover for cart icon
     (function(){
-        $('#socialheader ul li.cart').hover(function() {
+        $('#masthead > .row-1 > .column-3 .cart').hover(function() {
             if($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")!==undefined){
                 clearTimeout(Number($('#masthead > .row-1 > .column-3 .popup-cart').attr("data-timeout")));
             }
@@ -246,7 +246,7 @@ jQuery(document).ready(function ($) {
 //__________________________________________
 
     $( '.search-icon' ).click(function() {
-        $( 'input.search-field' ).toggle( 100);
+        $( '#masthead > .row-2 .sb-search' ).toggle( 100);
     });
     /**
      * navigation.js

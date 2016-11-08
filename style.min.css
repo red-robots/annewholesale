@@ -1374,32 +1374,36 @@ html[xmlns] .flexslider .slides{display:block}
 }.widget{margin:0 0 1.5em}
 .widget select{max-width:100%}
 .clear-bottom:after{content:"";display:block;clear:both}
-header>.row-1>.column-1{width:100%;text-align:center;margin:15px 0;font-size:16px;font-family:FuturaPT-Light;color:#948c82;font-weight:600;text-transform:uppercase}
-@media screen and (min-width:600px){header>.row-1>.column-1{text-align:left;width:30%;float:left}
-}@media screen and (min-width:900px){header>.row-1>.column-1{width:37%}
-}header>.row-1>.column-2.logo{margin:15px auto;display:block;width:100%}
-@media screen and (min-width:350px){header>.row-1>.column-2.logo{width:80%}
-}@media screen and (min-width:600px){header>.row-1>.column-2.logo{width:40%;float:left}
-}@media screen and (min-width:900px){header>.row-1>.column-2.logo{width:26%}
-}header>.row-1>.column-2.logo a{display:block}
-header>.row-1>.column-3{position:relative;margin:7px 0;width:100%}
-@media screen and (min-width:600px){header>.row-1>.column-3{display:block;float:left;width:30%}
-}@media screen and (min-width:900px){header>.row-1>.column-3{width:37%}
-}header>.row-1>.column-3>.wrapper{display:table;width:auto;margin:0 auto}
-@media screen and (min-width:600px){header>.row-1>.column-3>.wrapper{display:block;margin:0}
-}header>.row-1>.column-3>.wrapper .account-link{float:right;display:inline-block;font-size:16px;font-family:FuturaPT-Light;font-weight:600;height:32px;text-transform:uppercase;padding:8px 0}
-header>.row-1>.column-3>.wrapper .account-link a{text-decoration:none;color:#948c82}
-header>.row-1>.column-3>.wrapper .account-link a:hover{color:#96a7a6}
-header>.row-1>.column-3>.wrapper .search-icon{float:right;width:32px;background-position:-276.5px -6.5px;background-image:url(images/icons.png);background-size:360px 180px;background-repeat:no-repeat;display:inline-block;height:32px;cursor:pointer;margin:0 0 0 20px}
-header>.row-1>.column-3>.wrapper .cart{float:right;margin:0 0 0 10px;display:inline-block}
-header>.row-1>.column-3>.wrapper .cart a{text-decoration:none;background-image:url(images/icons.png);background-size:360px 180px;background-repeat:no-repeat;display:inline-block;height:32px;position:relative;box-sizing:border-box;cursor:pointer;color:white;text-align:center;font-size:12px;padding:12px 2px 8px 0;width:33px;background-position:-321.5px -6.5px}
-header>.row-1>.column-3>.wrapper .cart a:hover{background-position:-321.5px -96.5px}
-header>.row-2 .sb-search{display:none;float:right}
-header>.row-2 .sb-search input.search-field{border:0;padding:2px 40px 2px 20px;height:32px;font-family:"Open Sans",Helvetica,Arial,sans-serif;font-weight:300;font-size:14px;display:inline-block;background-color:rgba(232,229,224,0.8);color:#948c82;width:auto}
-header>#site-navigation.row-3{position:relative}
-header>#site-navigation.row-3 .sub-menu{margin:0;padding:0}
-@media screen and (min-width:600px){header>#site-navigation.row-3 .sub-menu{position:absolute;left:0;top:100%;padding:10px 1000em 20px 1000em;margin:0 -1000em}
-}#cboxContent .woocommerce div.product div.images{float:none;width:100%;margin-bottom:2em}
+header#masthead>.row-1>.column-1{width:100%;text-align:center;margin:15px 0;font-size:16px;font-family:FuturaPT-Light;color:#948c82;font-weight:600;text-transform:uppercase}
+@media screen and (min-width:600px){header#masthead>.row-1>.column-1{text-align:left;width:30%;float:left}
+}@media screen and (min-width:900px){header#masthead>.row-1>.column-1{width:37%}
+}header#masthead>.row-1>.column-2.logo{margin:15px auto;display:block;width:100%}
+@media screen and (min-width:350px){header#masthead>.row-1>.column-2.logo{width:80%}
+}@media screen and (min-width:600px){header#masthead>.row-1>.column-2.logo{width:40%;float:left}
+}@media screen and (min-width:900px){header#masthead>.row-1>.column-2.logo{width:26%}
+}header#masthead>.row-1>.column-2.logo a{display:block}
+header#masthead>.row-1>.column-3{position:relative;margin:7px 0;width:100%}
+@media screen and (min-width:600px){header#masthead>.row-1>.column-3{display:block;float:left;width:30%}
+}@media screen and (min-width:900px){header#masthead>.row-1>.column-3{width:37%}
+}header#masthead>.row-1>.column-3>.wrapper{display:table;width:auto;margin:0 auto}
+@media screen and (min-width:600px){header#masthead>.row-1>.column-3>.wrapper{display:block;margin:0}
+}header#masthead>.row-1>.column-3>.wrapper .account-link{float:right;display:inline-block;font-size:16px;font-family:FuturaPT-Light;font-weight:600;height:32px;text-transform:uppercase;padding:8px 0}
+header#masthead>.row-1>.column-3>.wrapper .account-link a{text-decoration:none;color:#948c82}
+header#masthead>.row-1>.column-3>.wrapper .account-link a:hover{color:#96a7a6}
+header#masthead>.row-1>.column-3>.wrapper .search-icon{float:right;width:32px;background-position:-276.5px -6.5px;background-image:url(images/icons.png);background-size:360px 180px;background-repeat:no-repeat;display:inline-block;height:32px;cursor:pointer;margin:0 0 0 20px}
+header#masthead>.row-1>.column-3>.wrapper .cart{float:right;margin:0 0 0 10px;display:inline-block}
+header#masthead>.row-1>.column-3>.wrapper .cart a{text-decoration:none;background-image:url(images/icons.png);background-size:360px 180px;background-repeat:no-repeat;display:inline-block;height:32px;position:relative;box-sizing:border-box;cursor:pointer;color:white;text-align:center;font-size:12px;padding:12px 2px 8px 0;width:33px;background-position:-321.5px -6.5px}
+header#masthead>.row-1>.column-3>.wrapper .cart a:hover{background-position:-321.5px -96.5px}
+header#masthead>.row-2 .sb-search{display:none;float:right}
+header#masthead>.row-2 .sb-search input.search-field{border:0;padding:2px 40px 2px 20px;height:32px;font-family:"Open Sans",Helvetica,Arial,sans-serif;font-weight:300;font-size:14px;display:inline-block;background-color:rgba(232,229,224,0.8);color:#948c82;width:auto}
+header#masthead>#site-navigation.row-3{position:relative}
+header#masthead>#site-navigation.row-3 .sub-menu{margin:0;padding:0}
+@media screen and (min-width:600px){header#masthead>#site-navigation.row-3 .sub-menu{position:absolute;left:0;top:100%;padding:10px 1000em 20px 1000em;margin:0 -1000em}
+}footer#colophon .footer-left .footer-nav ul{margin:0;padding:0}
+footer#colophon .footer-left .footer-nav ul.sub-menu{padding:0 0 0 10px}
+footer#colophon .footer-left .footer-nav ul li{margin:0;padding:0;list-style-type:none}
+footer#colophon .footer-left .footer-nav ul li a{text-transform:uppercase;text-decoration:none}
+#cboxContent .woocommerce div.product div.images{float:none;width:100%;margin-bottom:2em}
 @media screen and (min-width:600px){#cboxContent .woocommerce div.product div.images{float:left;width:48%}
 }#cboxContent .woocommerce div.product .entry-summary{float:none;width:100%;margin-bottom:2em}
 @media screen and (min-width:600px){#cboxContent .woocommerce div.product .entry-summary{float:right;width:48%}

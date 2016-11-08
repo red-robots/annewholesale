@@ -5,7 +5,7 @@
     clear: both;
   }
 }
-header {
+header#masthead {
   > .row-1 {
     > .column-1 {
       width: 100%;
@@ -152,6 +152,28 @@ header {
         padding: 10px 1000em 20px 1000em;
         margin: 0 -1000em;
 
+      }
+    }
+  }
+}
+footer#colophon {
+  .footer-left {
+    .footer-nav {
+      ul {
+        margin: 0;
+        padding: 0;
+        &.sub-menu {
+          padding: 0 0 0 10px;
+        }
+        li {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          a {
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+        }
       }
     }
   }

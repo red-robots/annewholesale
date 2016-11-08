@@ -22,8 +22,15 @@
 				'container'       => 'div',
 				'container_class' => 'footer-nav',
 			) ); ?>
-			<a href="<?php the_field('sitemap' , 'option'); ?>">Sitemap</a> |
-			<a href="http://bellaworksweb.com" target="_blank">Site by Bellaworks</a>
+			<?php $sitemap_link = get_the_permalink(158);
+			if($sitemap_link):?>
+				<a href="<?php echo $sitemap_link; ?>">
+			<?php endif;?>
+				Sitemap
+			<?php if($sitemap_link):?>
+				</a>
+			<?php endif;?>
+			| <a href="http://bellaworksweb.com" target="_blank">Site by Bellaworks</a>
 
 			<div class="copyright">
 				&copy; Anne Neilson Home <?php echo date('Y'); ?>

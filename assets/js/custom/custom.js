@@ -177,7 +177,7 @@ jQuery(document).ready(function ($) {
                             function(response){
                                 if($(response).find("response_data").length>0){
                                     $text = $(response).find("response_data").eq(0).text();
-                                    $('#socialheader ul li.cart a').html($text);
+                                    $('#masthead > .row-1 > .column-3 .cart a').html($text);
 
                                 }
                             }

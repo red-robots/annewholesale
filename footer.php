@@ -12,7 +12,7 @@
 ?>
 
 <footer id="colophon" role="contentinfo">
-	<div class="footer-inside">
+	<div class="footer-inside clear-bottom">
 		<p class="social banner-text">Get Social</p>
 		<div id="social"><?php acc_social_links() ?></div><!-- social -->
 

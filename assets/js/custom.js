@@ -6,7 +6,25 @@
  */
 
 jQuery(document).ready(function ($) {
-	
+
+    $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 50,
+        itemMargin: 5,
+        asNavFor: '.productslider'
+    });
+
+    $('.productslider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        smoothHeight: true,
+        sync: "#carousel"
+    });
 	/*
 	*
 	*	Current Page Active

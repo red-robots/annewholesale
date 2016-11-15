@@ -3133,7 +3133,7 @@ footer#colophon {
     font-size: 18px;
     box-sizing: initial;
   }
-
+/*
   .thumbnails {
     width: 250px;
     margin: 0 auto;
@@ -3144,7 +3144,7 @@ footer#colophon {
     width: 50%;
     margin: 0;
   }
-
+*/
   .woocommerce-message, .woocommerce-page .woocommerce-message {
     background-color: rgba(110, 153, 142, 1);
     color: #fff;
@@ -3223,7 +3223,10 @@ footer#colophon {
     color: #96A7A6 !important;
   }
 
-  a.remove {
+  .woocommerce div.product div.images div.thumbnails {
+    display: none;
+  }
+  .woocommerce a.remove {
     width: auto;
     display: inline-block;
     font-size: 1em !important;
@@ -3237,7 +3240,7 @@ footer#colophon {
     padding: 2px;
   }
 
-  a.remove:hover {
+  .woocommerce a.remove:hover {
     width: auto;
     display: inline-block;
     font-size: 1em !important;

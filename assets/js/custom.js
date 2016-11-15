@@ -162,8 +162,10 @@ jQuery(document).ready(function ($) {
                             function(response){
                                 if($(response).find("response_data").length>0){
                                     $text = $(response).find("response_data").eq(0).text();
-                                    $('.popup-cart').html($text).show();
-
+                                    $('.popup-cart').html($text);
+                                    if($('.template-index').length>0){
+                                        $('.popup-cart').show();
+                                    }
                                 }
                             }
                         );

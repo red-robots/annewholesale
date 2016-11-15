@@ -918,8 +918,10 @@ footer#colophon {
 .popup-cart {
   position: absolute;
   top: 110%;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 75%;
+  min-width: 233px;
+  max-width: 308px;
   z-index: 20;
   background-color: white;
   border: 1px solid #96A7A6;
@@ -1181,7 +1183,7 @@ footer#colophon {
       }
       .checkout.button {
         position: relative;
-        font-size: 14pt;
+        font-size: 12pt;
         text-align: center;
         background-color: #96A7A6;
         color: white;
@@ -1205,7 +1207,7 @@ footer#colophon {
       }
       .continue.button {
         position: relative;
-        font-size: 14pt;
+        font-size: 12pt;
         text-align: center;
         background-color: #96A7A6;
         color: white;

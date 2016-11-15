@@ -27,11 +27,12 @@ function bella_archive_price_and_description(){
 	$price = $product->get_price_html();
 	$product_box_line_1 = get_field("product_box_line_1");
 	$product_box_line_2 = get_field("product_box_line_2");
-	echo '<div class="price-description">';
+	echo '<div class="price-description"><div class="row-1">';
 	if($price){
 		echo $price.' ';
 	}
-	echo $product_box_line_1.'<br>'.$product_box_line_2.
+	echo $product_box_line_1.'</div><!--.row-1--><div class="row-2">'.$product_box_line_2.
+	     '</div><!--.row-2-->'.
          '</div><!--.price-description-->';
 }
 add_action( 'woocommerce_after_shop_loop_item_title','bella_archive_price_and_description',10 );

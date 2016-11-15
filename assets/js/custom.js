@@ -162,7 +162,7 @@ jQuery(document).ready(function ($) {
                             function(response){
                                 if($(response).find("response_data").length>0){
                                     $text = $(response).find("response_data").eq(0).text();
-                                    $('.popup-cart').html($text);
+                                    $('.popup-cart').html($text).show();
 
                                 }
                             }
@@ -183,28 +183,32 @@ jQuery(document).ready(function ($) {
                             }
                         );
                         //invoke checkout popup
-                        jQuery.post(
-                            bellaajaxurl.url,
-                            {
-                                'action': 'bella_get_checkout_popup',
-                                'id':id,
-                            },
-                            function(response){
-                                if($(response).find("response_data").length>0){
-                                    $text = $(response).find("response_data").eq(0).text();
-                                    $.colorbox({
-                                        width: '90%',
-                                        maxWidth: '600px',
-                                        height: '120%',
-                                        html:$text,
-                                    });
-                                    $('.popup-checkout .continue.button').on('click',function(e){
-                                        e.preventDefault();
-                                        $.colorbox.close();
-                                    });
+                        if($('.template-index').length===0) {
+                            jQuery.post(
+                                bellaajaxurl.url,
+                                {
+                                    'action': 'bella_get_checkout_popup',
+                                    'id': id,
+                                },
+                                function (response) {
+                                    if ($(response).find("response_data").length > 0) {
+                                        $text = $(response).find("response_data").eq(0).text();
+                                        $.colorbox({
+                                            width: '90%',
+                                            maxWidth: '900px',
+                                            html: $text,
+                                        });
+                                        $(document).bind('cbox_complete', function () {
+                                            $.colorbox.resize();
+                                        });
+                                        $('.popup-checkout .continue.button').on('click', function (e) {
+                                            e.preventDefault();
+                                            $.colorbox.close();
+                                        });
+                                    }
                                 }
-                            }
-                        );
+                            );
+                        }
                     }
                 }
             );

@@ -64,14 +64,13 @@ function jk_remove_wc_breadcrumbs() {
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
 
-// Change number or products per row to 3
 add_filter( 'loop_shop_columns', 'loop_columns' );
 if ( ! function_exists( 'loop_columns' ) ) {
 	function loop_columns() {
 		if ( is_product_category( 'notecards' ) ) {
 			return 2;
 		} else {
-			return 4; // 3 products per row
+			return 4;
 		}
 	}
 }
@@ -194,7 +193,6 @@ function bella_ajax_get_cart_count() {
 	$response    = array(
 		'what'   => 'cart',
 		'action' => 'get_cart_count',
-		'id'     => $status,
 		'data'   => WC()->cart->get_cart_contents_count(),
 	);
 	$xmlResponse = new WP_Ajax_Response( $response );

@@ -41,7 +41,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 </div>
 
 <?php
-
+/*
 // Post Url
 $permalink = get_permalink();
 // Short Link for Twitter
@@ -58,11 +58,11 @@ $image_large_url = $image_large_url_array[0];
 // Thumb Image
 //$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail', true);
 //$thumb_url = $thumb_url_array[0];
-
+*/
 /*
 	Facebook
 ______________________ */
-// Url of app created on Facebook
+/*// Url of app created on Facebook
 $Furl = 'https://www.facebook.com/dialog/feed?app_id=375005459363918';
 // Picture
 $picture = '&picture=' . $image_large_url;
@@ -74,10 +74,11 @@ $desc = '&description=' . $excerpt;
 $redirect = '&redirect_uri=' . $permalink;
 // All together now...
 $facebook = $Furl . $picture . $name . $desc . $redirect;
+*/
 /*
 	Twitter
 ______________________ */
-// Tweet Url
+/*// Tweet Url
 $Turl = 'https://twitter.com/intent/tweet?';
 // Text
 $text = 'text=' . get_the_title();
@@ -85,20 +86,20 @@ $postLink = '&url=' . $shortlink;
 $referer = '&original_referer=' . $permalink;
 // All together now...
 $twitter = $Turl . $text . $postLink . $referer;
-/*
+*//*
 	Pintrest
 ______________________ */
-$Purl = 'http://pinterest.com/pin/create/button/?url=' . $permalink;
+/*$Purl = 'http://pinterest.com/pin/create/button/?url=' . $permalink;
 // Picture
 $Ptitle = '&description=' . $title;
 $media = '&media=' . $image_large_url;
 // All together now...
 $pintrest = $Purl . $media . $Ptitle . ' - Anne Neilson Home';
-
+*/
 /*
 	Email
 _______________________*/
-$Eurl = "mailto:?";
+/*$Eurl = "mailto:?";
 $subject = "subject=".$title.' - Anne Neilson Home';
 $body = '&body='.$permalink;
 $email = $Eurl.$subject.$body;
@@ -111,3 +112,4 @@ $email = $Eurl.$subject.$body;
 		<li class="email"><a href="<?php echo $email; ?>" target="_blank">Email</a></li>
 	</ul>
 </div><!-- share -->
+*/

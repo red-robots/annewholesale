@@ -38,6 +38,13 @@
 		</div><!-- footer left -->
 
 		<div class="footer-right clear-bottom">
+			<?php $marketing_text = get_field( "marketing_text", "option" );
+			$marketing_link       = get_field( "marketing_link", "option" );
+			if ( $marketing_text && $marketing_link ):?>
+				<div class="button wrapper">
+					<a class="buttn" href="<?php echo $marketing_link;?>"><?php echo $marketing_text;?></a>
+				</div>
+			<?php endif; ?>
 			<?php $questions_text = get_field( "questions_text", "option" );
 			$questions_link       = get_field( "questions_link", "option" );
 			if ( $questions_text && $questions_link ):?>

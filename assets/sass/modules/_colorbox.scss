@@ -21,6 +21,7 @@
 	width: 80%;
 	height: 80%;
 	}
+#cboxOverlay{background:rgba(0,0,0,.3);}
 .cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
 #colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
 
@@ -29,7 +30,6 @@
     Change the following styles to modify the appearance of Colorbox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay{background:#000;}
 #colorbox{outline:0;}
    /* #cboxTopLeft{width:14px; height:14px; background:url(images/controls.png) no-repeat 0 0;}
     #cboxTopCenter{height:14px; background:url(images/border.png) repeat-x top left;}
@@ -48,6 +48,7 @@
 			}
         #cboxLoadingOverlay{background:url(images/loading_background.png) no-repeat center center;}
         #cboxLoadingGraphic{background:url(images/loading.gif) no-repeat center center;}
+        #cboxClose{background:url(images/close.png) no-repeat 0px 0px;right:10px; background-position:0px 0px;}
         #cboxTitle{
 			position:absolute; 
 			bottom:-25px; 
@@ -64,7 +65,7 @@
         #cboxCurrent{position:absolute; bottom:-25px; left:58px; font-weight:bold; color:#7C7C7C;}
 
         /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
-        #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {
+        #cboxPrevious, #cboxNext, #cboxSlideshow {
 			border:0; 
 			padding:0; 
 			margin:0; 
@@ -79,8 +80,20 @@
 			text-indent:-9999px;
 			box-shadow:none;
 		}
-        
-        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+        #cboxClose {
+          border: 0;
+          padding: 0;
+          margin: 0;
+          overflow: visible;
+          position: absolute;
+          top: 10px;
+          width: 50px;
+          height: 50px;
+          text-indent: -9999px;
+          box-shadow: none;
+        }
+
+          /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
         #cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
 
         #cboxPrevious{left:20px; background-position: -0px -0px;}

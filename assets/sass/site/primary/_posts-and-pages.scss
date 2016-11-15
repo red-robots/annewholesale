@@ -15,12 +15,15 @@
         }
       }
       @media screen and (min-width: 900px) {
-        &:nth-child(even) {
-          float: left;
-        }
         float: left;
         margin: 0 3.8% 2.992em 0;
         width: 22.05%;
+        &:nth-child(even) {
+          float: left;
+        }
+      }
+      &.last {
+        margin-right: 0;
       }
       h3 {
         text-align: center;

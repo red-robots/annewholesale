@@ -19,6 +19,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+wp_redirect(get_bloginfo('url'));
+exit;
 
 get_header( 'shop' ); ?>
 

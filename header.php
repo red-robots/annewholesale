@@ -96,8 +96,8 @@
 					<div class="totals-checkout">
 						<div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div>
 						<!--.subtotal-->
-						<div class="checkout button">Checkout<a class="surrounding"
-						                                        href="<?php echo WC()->cart->get_checkout_url() ?>"></a>
+						<div class="checkout button">
+							<a class="surrounding" href="<?php echo WC()->cart->get_checkout_url() ?>">Checkout</a>
 						</div><!--.checkout .button-->
 					</div><!--.totals-checkout-->
 				</div><!--.popup-cart-->

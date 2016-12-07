@@ -994,15 +994,16 @@ footer#colophon {
       background-color: #96A7A6;
       color: white;
       text-transform: uppercase;
-      padding: 10px 20px;
       display: inline-block;
       margin: 20px 0;
       font-family: FuturaPT-Light;
       font-weight: 600;
       a.surrounding {
+        padding: 10px 20px;
         display: block;
+        color: inherit;
+        text-decoration: none;
         &:hover {
-          text-decoration: none;
           cursor: pointer;
         }
       }
@@ -3223,9 +3224,6 @@ footer#colophon {
     color: #96A7A6 !important;
   }
 
-  .woocommerce div.product div.images div.thumbnails {
-    display: none;
-  }
   .woocommerce a.remove {
     width: auto;
     display: inline-block;

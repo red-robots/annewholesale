@@ -103,7 +103,7 @@ function change_image_shown( $args ) {
 
 	} elseif ( has_post_thumbnail() ) {
 		echo '<div class="image-wrapper">';
-		the_post_thumbnail();
+		the_post_thumbnail('medium');
 		echo '<div class="overlay"><a class="surrounding quickview" href="#' . $product_title . '-popup">Quick View</a></div><!--.overlay--></div><!--.image-wrapper-->';
 	}
 }

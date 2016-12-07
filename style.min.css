@@ -1539,9 +1539,9 @@ footer#colophon .footer-inside .footer-right p{font-size:13px;line-height:1.6;ma
 .popup-cart .product-box .product-info .product-price{font-weight:700;margin:0;font-family:"NeutraTextDemiAlt",Georgia;font-size:10px}
 .popup-cart .totals-checkout{text-align:center}
 .popup-cart .totals-checkout .subtotal{font-size:16pt;text-align:center;margin:20px 20px 0 20px;font-family:FuturaPT-Light;font-weight:300}
-.popup-cart .totals-checkout .checkout.button{position:relative;font-size:12pt;text-align:center;background-color:#96a7a6;color:white;text-transform:uppercase;padding:10px 20px;display:inline-block;margin:20px 0;font-family:FuturaPT-Light;font-weight:600}
-.popup-cart .totals-checkout .checkout.button a.surrounding{display:block}
-.popup-cart .totals-checkout .checkout.button a.surrounding:hover{text-decoration:none;cursor:pointer}
+.popup-cart .totals-checkout .checkout.button{position:relative;font-size:12pt;text-align:center;background-color:#96a7a6;color:white;text-transform:uppercase;display:inline-block;margin:20px 0;font-family:FuturaPT-Light;font-weight:600}
+.popup-cart .totals-checkout .checkout.button a.surrounding{padding:10px 20px;display:block;color:inherit;text-decoration:none}
+.popup-cart .totals-checkout .checkout.button a.surrounding:hover{cursor:pointer}
 .popup-view{box-sizing:border-box;padding:30px;background-color:white}
 @media screen and (min-width:768px){.popup-view{padding:0}
 }.popup-view:after{clear:both;display:block;content:""}
@@ -1685,7 +1685,6 @@ a.button.alt,button.button.alt,input.button.alt,#respond input#submit.alt,#conte
 a.button.alt:hover,button.button.alt:hover,input.button.alt:hover,#respond input#submit.alt:hover,#content input.button.alt:hover,.woocommerce-page a.button.alt:hover,.woocommerce-page button.button.alt:hover,.woocommerce-page input.button.alt:hover,.woocommerce-page #respond input#submit.alt:hover,.woocommerce-page #content input.button.alt:hover,table.cart input:hover,#content table.cart input:hover,.woocommerce-page table.cart input:hover,.woocommerce-page #content table.cart input:hover{background-color:rgba(150,167,166,0.7);background:rgba(150,167,166,0.7);font-weight:300;border-radius:0;border:0;text-shadow:none}
 #content div.product form.cart div.quantity,div.product form.cart div.quantity,.woocommerce-page #content div.product form.cart div.quantity,.woocommerce-page div.product form.cart div.quantity{float:left;margin:0 10px 10px 0}
 #content .summary .stock,#content .summary .available-on-backorder{color:#96a7a6 !important}
-.woocommerce div.product div.images div.thumbnails{display:none}
 .woocommerce a.remove{width:auto;display:inline-block;font-size:1em !important;text-align:left;line-height:1;color:#757575 !important;text-decoration:none;font-weight:normal !important;border:0;padding:2px}
 .woocommerce a.remove:hover{width:auto;display:inline-block;font-size:1em !important;text-align:left;line-height:1;border-radius:0;color:#fff !important;background-color:red !important;text-decoration:none;font-weight:normal !important;border:0}
 @media screen and (min-width:600px){div.product form.cart,div.product p.cart{margin-bottom:1.5em}
@@ -1707,6 +1706,54 @@ footer.entry-meta,footer.entry-meta a{color:#444;font-size:10pt}
 .commentlist>li.comment{background:0;position:relative;width:auto}
 .commentlist .avatar{height:39px;left:2.2em;top:2.2em;width:39px}
 .comments-area article header cite,.comments-area article header time{margin-left:50px}
+}.flex-container a:active,.productslider a:active,.flex-container a:focus,.productslider a:focus{outline:0}
+.slides,.productslider .flex-control-nav,.productslider .flex-direction-nav{margin:0;padding:0;list-style:none}
+.productslider{margin:0;padding:0}
+.productslider .slides>li{display:none;-webkit-backface-visibility:hidden}
+.productslider .slides img{width:100%;display:block}
+.productslider .flex-pauseplay span{text-transform:capitalize}
+.slides:after{content:"\0020";display:block;clear:both;visibility:hidden;line-height:0;height:0}
+html[xmlns] .slides{display:block}
+* html .slides{height:1%}
+.no-js .slides>li:first-child{display:block}
+.productslider{position:relative}
+.flex-viewport{max-height:2000px;-webkit-transition:all 1s ease;transition:all 1s ease}
+.loading .flex-viewport{max-height:300px}
+.productslider .slides{zoom:1}
+#carousel{width:auto;position:relative;margin:20px 0 0 0}
+#carousel .slides li{margin-right:5px;border:1px solid #999}
+#carousel ul.flex-control-nav li{border:0 solid #999}
+#carousel .flex-direction-nav a.flex-prev{content:'\f002';background-position:-0 0;text-indent:-9000px;width:30px !important;display:none}
+#carousel .flex-direction-nav a.flex-next{content:'\f002';background-position:-40px 0;text-indent:-9000px;width:30px !important;display:none}
+.productslider .flex-direction-nav{*height:0}
+.productslider .flex-direction-nav a,#carousel .flex-direction-nav a{display:block;width:40px;height:40px;margin:-20px 0 0;position:absolute;top:50%;z-index:10;overflow:hidden;opacity:0;cursor:pointer;color:rgba(0,0,0,0.8);text-shadow:1px 1px 0 rgba(255,255,255,0.3);-webkit-transition:all .3s ease;transition:all .3s ease;font-weight:normal;text-indent:-9000px}
+.productslider .flex-direction-nav .flex-prev,#carousel .flex-direction-nav .flex-prev{left:10px;opacity:0}
+.productslider .flex-direction-nav .flex-next,#carousel .flex-direction-nav .flex-next{right:10px;opacity:0}
+.productslider:hover .flex-prev,#carousel:hover .flex-prev{opacity:0;left:10px}
+.productslider:hover .flex-next,#carousel:hover .flex-next{opacity:0;right:10px;z-index:1000}
+.productslider:hover .flex-next:hover,.productslider:hover .flex-prev:hover{opacity:.3}
+.productslider .flex-direction-nav .flex-disabled{opacity:0 !important;filter:alpha(opacity=0);cursor:default}
+.productslider .flex-direction-nav a{text-indent:-9000px;background-image:url(images/arrows.png);background-repeat:no-repeat;background-position:0 0}
+.productslider .flex-direction-nav a:before{font-size:40px;display:inline-block;font-weight:normal;background-position:0 0;text-indent:-9000px}
+.productslider .flex-direction-nav a.flex-prev{background-position:-0 0;text-indent:-9000px;width:30px !important}
+.productslider .flex-direction-nav a.flex-next{background-position:-40px 0;text-indent:9000px;width:30px !important}
+.productslider .flex-pauseplay a{display:block;width:20px;height:20px;position:absolute;bottom:5px;left:10px;opacity:.8;z-index:10;overflow:hidden;cursor:pointer;color:#000}
+.productslider .flex-pauseplay a:before{font-family:"productslider-icon";font-size:20px;display:inline-block;content:'\f004'}
+.productslider .flex-pauseplay a:hover{opacity:1}
+.productslider .flex-pauseplay a.flex-play:before{content:'\f003'}
+.productslider .flex-control-nav{width:100%;position:absolute;bottom:-20px;text-align:center}
+.productslider .flex-control-nav li{margin:0 6px;display:inline-block;zoom:1;*display:inline;width:50px;height:50px}
+.productslider .flex-control-nav li img{height:100%}
+.productslider .flex-control-paging li a{width:11px;height:11px;display:block;background:#666;background:rgba(0,0,0,0.5);cursor:pointer;text-indent:-9999px;border-radius:20px;-o-box-shadow:inset 0 0 3px rgba(0,0,0,0.3);box-shadow:inset 0 0 3px rgba(0,0,0,0.3)}
+.productslider .flex-control-paging li a:hover{background:#333;background:rgba(0,0,0,0.7)}
+.productslider .flex-control-paging li a.flex-active{background:#000;background:rgba(0,0,0,0.9);cursor:default}
+.productslider .flex-control-thumbs{margin:5px 0 0;position:static;overflow:hidden}
+.productslider .flex-control-thumbs li{float:left}
+.productslider .flex-control-thumbs img{width:100%;display:block;opacity:.7;cursor:pointer}
+.productslider .flex-control-thumbs img:hover{opacity:1}
+.productslider .flex-control-thumbs .flex-active{opacity:1;cursor:default}
+@media screen and (max-width:860px){.productslider .flex-direction-nav .flex-prev{opacity:1;left:10px}
+.productslider .flex-direction-nav .flex-next{opacity:1;right:10px}
 }.template-index #content .product{float:none;margin:0 0 20px 0;width:100%;padding:0;position:relative}
 @media screen and (min-width:600px){.template-index #content .product{width:48%;float:left;margin:0 0 2.992em 0}
 .template-index #content .product:nth-child(even){float:right}

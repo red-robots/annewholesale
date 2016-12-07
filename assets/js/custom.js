@@ -94,6 +94,24 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	new WOW().init();
 
+    $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 50,
+        itemMargin: 5,
+        asNavFor: '.productslider'
+    });
+
+    $('.productslider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        smoothHeight: true,
+        sync: "#carousel"
+    });
 
     //image hover for icons on category/archive pages
     (function(){
@@ -287,4 +305,40 @@ jQuery(document).ready(function ($) {
             }
         };
     } )();
+    (function($){
+        $row_2 = $('#masthead >.row-2');
+        $window = $(window);
+        $nav = $('#site-navigation');
+        $window.on('scroll', check);
+        $window.on('resize', check);
+        check();
+        function check() {
+            console.log(window.innerWidth);
+            $anchor = $row_2.offset().top + $row_2.outerHeight();
+            if ($anchor < $window.scrollTop() && window.innerWidth>600) {
+                $nav.css({
+                    position: "fixed",
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    padding: "0 5%",
+                    backgroundColor: "white",
+                    margin: "0",
+                    zIndex: 2
+                });
+            }
+            if($anchor > $window.scrollTop() || window.innerWidth<600) {
+                $nav.css({
+                    position: "",
+                    top: "",
+                    left: "",
+                    width: "",
+                    padding: "",
+                    backgroundColor: "",
+                    margin: "",
+                    zIndex: ""
+                });
+            }
+        }
+    })(jQuery);
 });// END #####################################    END

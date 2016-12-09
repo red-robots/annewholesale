@@ -117,3 +117,176 @@
 .page-id-6 #page #masthead > .row-1 > .column-3 .cart, .page-id-6 #page .return-to-shop .button.wc-backward {
   display: none;
 }
+#mastheadlogin {
+  width: 100%;
+  >.row-1 {
+    width: 100%;
+    a {
+      img {
+        width: 100%;
+        margin: 15px auto;
+        display: block;
+        @media screen and (min-width: 350px) {
+          width: 80%;
+        }
+        @media screen and (min-width: 600px) {
+          width: 40%;
+          margin: 25px auto;
+        }
+        @media screen and (min-width: 900px) {
+          width: 26%;
+        }
+      }
+    }
+  }
+}
+#colophonlogin {clear: both;
+  font-family: FuturaPT-Medium;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 2;
+  width: 100%;
+  margin: 24px auto 0px auto;
+  padding: 24px 0;
+  overflow: hidden;
+  color: #fff;
+  background-color: #96A7A6;
+  .footer-inside {
+    @media screen and (min-width: 600px) {
+      width: 90%;
+      margin: 0px auto;
+      padding: 10px;
+    }
+    @media screen and (min-width: 1040px) {
+      width: 1040px;
+      margin: 0px auto;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .social.banner-text {
+      font-size: 14pt;
+      margin: 20px 0 10px 0;
+      text-transform: uppercase;
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+    #social {
+      text-align: center;
+      .socialone {
+        width: 40px;
+      }
+
+      .socialtwo {
+        width: 80px;
+      }
+
+      .socialthree {
+        width: 120px;
+      }
+
+      .socialfour {
+        width: 160px;
+      }
+
+      .socialfive {
+        width: 200px;
+      }
+
+      .socialsix {
+        width: 240px;
+      }
+
+      #sociallinks {
+        width: auto;
+        display: inline-block;
+        margin: 0px auto 0px auto;
+        @media screen and (min-width: 600px) {
+          margin: 0px auto 50px auto;
+        }
+        ul {
+          margin: 0px;
+          padding: 0px;
+          list-style-type: none;
+          z-index: 2;
+          position: relative;
+          li {
+            float: left;
+            position: relative;
+            margin: 0px 5px;
+            list-style: none;
+            a {
+              text-decoration: none;
+              background-image: url(./images/icons.png);
+              background-repeat: no-repeat;
+              background-size: 240px 120px;
+              display: inline-block;
+              height: 30px;
+              width: 30px;
+              text-indent: -9000px;
+              position: relative;
+              opacity: .8;
+              &:hover {
+                opacity: 1;
+              }
+            }
+            &.facebook a {
+              background-position: -0px -0px;
+              transition: opacity 0.3s ease;
+              &:hover {
+                background-position: -0px -30px;
+              }
+            }
+            &.twitter a {
+              background-position: -30px -0px;
+              transition: opacity 0.3s ease;
+              &:hover {
+                background-position: -30px -30px;
+              }
+            }
+            &.pintrest a {
+              background-position: -60px -0px;
+              transition: opacity 0.3s ease;
+              &:hover {
+                background-position: -60px -30px;
+              }
+            }
+            &.instagram a {
+              background-position: -90px -0px;
+              transition: opacity 0.3s ease;
+              &:hover {
+                background-position: -90px -30px;
+              }
+            }
+            &.houzz a {
+              background-position: -120px -0px;
+              transition: opacity 0.3s ease;
+              &:hover {
+                background-position: -120px -30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .copyright, .bellaworks {
+      text-align: center;
+    }
+  }
+}
+.template-login {
+  padding-bottom: 50px;
+  #loginform {
+    display: table;
+    margin: 0 auto;
+    label {
+      display: block;
+    }
+    input {
+      display: block;
+    }
+  }
+}

@@ -1773,6 +1773,45 @@ html[xmlns] .slides{display:block}
 @media screen and (min-width:900px) and (max-width:1039px){.template-index #content .product form.cart .button{padding:18px 10px}
 }.template-index #content .product form.cart .button:hover{background-color:rgba(150,167,166,0.7)}
 .page-id-6 #page #masthead>.row-1>.column-3 .cart,.page-id-6 #page .return-to-shop .button.wc-backward{display:none}
+#mastheadlogin{width:100%}
+#mastheadlogin>.row-1{width:100%}
+#mastheadlogin>.row-1 a img{width:100%;margin:15px auto;display:block}
+@media screen and (min-width:350px){#mastheadlogin>.row-1 a img{width:80%}
+}@media screen and (min-width:600px){#mastheadlogin>.row-1 a img{width:40%;margin:25px auto}
+}@media screen and (min-width:900px){#mastheadlogin>.row-1 a img{width:26%}
+}#colophonlogin{clear:both;font-family:FuturaPT-Medium;font-weight:normal;font-style:normal;font-size:14px;line-height:2;width:100%;margin:24px auto 0 auto;padding:24px 0;overflow:hidden;color:#fff;background-color:#96a7a6}
+@media screen and (min-width:600px){#colophonlogin .footer-inside{width:90%;margin:0 auto;padding:10px}
+}@media screen and (min-width:1040px){#colophonlogin .footer-inside{width:1040px;margin:0 auto}
+}#colophonlogin .footer-inside a{color:#fff;text-decoration:none}
+#colophonlogin .footer-inside .social.banner-text{font-size:14pt;margin:20px 0 10px 0;text-transform:uppercase;width:100%;padding:0;text-align:center}
+#colophonlogin .footer-inside #social{text-align:center}
+#colophonlogin .footer-inside #social .socialone{width:40px}
+#colophonlogin .footer-inside #social .socialtwo{width:80px}
+#colophonlogin .footer-inside #social .socialthree{width:120px}
+#colophonlogin .footer-inside #social .socialfour{width:160px}
+#colophonlogin .footer-inside #social .socialfive{width:200px}
+#colophonlogin .footer-inside #social .socialsix{width:240px}
+#colophonlogin .footer-inside #social #sociallinks{width:auto;display:inline-block;margin:0 auto 0 auto}
+@media screen and (min-width:600px){#colophonlogin .footer-inside #social #sociallinks{margin:0 auto 50px auto}
+}#colophonlogin .footer-inside #social #sociallinks ul{margin:0;padding:0;list-style-type:none;z-index:2;position:relative}
+#colophonlogin .footer-inside #social #sociallinks ul li{float:left;position:relative;margin:0 5px;list-style:none}
+#colophonlogin .footer-inside #social #sociallinks ul li a{text-decoration:none;background-image:url(./images/icons.png);background-repeat:no-repeat;background-size:240px 120px;display:inline-block;height:30px;width:30px;text-indent:-9000px;position:relative;opacity:.8}
+#colophonlogin .footer-inside #social #sociallinks ul li a:hover{opacity:1}
+#colophonlogin .footer-inside #social #sociallinks ul li.facebook a{background-position:-0 -0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}
+#colophonlogin .footer-inside #social #sociallinks ul li.facebook a:hover{background-position:-0 -30px}
+#colophonlogin .footer-inside #social #sociallinks ul li.twitter a{background-position:-30px -0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}
+#colophonlogin .footer-inside #social #sociallinks ul li.twitter a:hover{background-position:-30px -30px}
+#colophonlogin .footer-inside #social #sociallinks ul li.pintrest a{background-position:-60px -0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}
+#colophonlogin .footer-inside #social #sociallinks ul li.pintrest a:hover{background-position:-60px -30px}
+#colophonlogin .footer-inside #social #sociallinks ul li.instagram a{background-position:-90px -0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}
+#colophonlogin .footer-inside #social #sociallinks ul li.instagram a:hover{background-position:-90px -30px}
+#colophonlogin .footer-inside #social #sociallinks ul li.houzz a{background-position:-120px -0;-webkit-transition:opacity .3s ease;transition:opacity .3s ease}
+#colophonlogin .footer-inside #social #sociallinks ul li.houzz a:hover{background-position:-120px -30px}
+#colophonlogin .footer-inside .copyright,#colophonlogin .footer-inside .bellaworks{text-align:center}
+.template-login{padding-bottom:50px}
+.template-login #loginform{display:table;margin:0 auto}
+.template-login #loginform label{display:block}
+.template-login #loginform input{display:block}
 .blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}

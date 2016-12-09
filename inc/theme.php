@@ -153,14 +153,14 @@ function redirect_login_page() {
 		exit;
 	}
 }
-add_action('init','redirect_login_page');
+add_action('init','redirect_login_page',1);
 
 function custom_login_failed() {
 	$login_page  = home_url('/login/');
 	wp_redirect($login_page . '?login=failed');
 	exit;
 }
-add_action('wp_login_failed', 'custom_login_failed');
+add_action('wp_login_failed', 'custom_login_failed',1);
 
 function verify_user_pass($user, $username, $password) {
 	$login_page  = home_url('/login/');
@@ -176,7 +176,7 @@ function logout_redirect() {
 	wp_redirect($login_page . "?login=false");
 	exit;
 }
-add_action('wp_logout','logout_redirect');
+add_action('wp_logout','logout_redirect',1);
 
 	function anne_wp_login_form( $args = array() ) {
 		$defaults = array(

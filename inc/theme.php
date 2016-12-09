@@ -144,23 +144,33 @@ function ac_first_and_last_menu_class($items) {
 }
 add_filter('wp_nav_menu_objects', 'ac_first_and_last_menu_class');
 
-/*function redirect_login_page() {
+function allow_login_page() {
+	$login_page  = parse_url(home_url('/login/'));
+	$page_viewed = parse_url($_SERVER['REQUEST_URI']);
+	if($login_page&&$page_viewed&&$login_page['path']&&$page_viewed['path']) {
+		if ( $page_viewed['path'] === $login_page['path'] && $_SERVER['REQUEST_METHOD'] === 'GET' ) {
+			remove_action( 'template_redirect', 'members_please_log_in', 0 );
+		}
+	}
+}
+add_action('init','allow_login_page',0);
+
+function redirect_login_page() {
 	$login_page  = home_url('/login/');
 	$page_viewed = basename($_SERVER['REQUEST_URI']);
-
 	if($page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
 		wp_redirect($login_page);
 		exit;
 	}
 }
-add_action('init','redirect_login_page',1);
+add_action('init','redirect_login_page',0);
 
 function custom_login_failed() {
 	$login_page  = home_url('/login/');
 	wp_redirect($login_page . '?login=failed');
 	exit;
 }
-add_action('wp_login_failed', 'custom_login_failed',1);
+add_action('wp_login_failed', 'custom_login_failed',0);
 
 function verify_user_pass($user, $username, $password) {
 	$login_page  = home_url('/login/');
@@ -176,7 +186,7 @@ function logout_redirect() {
 	wp_redirect($login_page . "?login=false");
 	exit;
 }
-add_action('wp_logout','logout_redirect',1); */
+add_action('wp_logout','logout_redirect',0);
 
 	function anne_wp_login_form( $args = array() ) {
 		$defaults = array(
@@ -267,9 +277,61 @@ add_action('wp_logout','logout_redirect',1); */
 							</form>';
 
 		if ( $args['echo'] ) {
-				echo $form;
-				do_action( 'login_form' );
-				echo $form_end;
+			$wp_error = new WP_Error();
+			global $error;
+			/**
+			 * Filters the message to display above the login form.
+			 *
+			 * @since 2.1.0
+			 *
+			 * @param string $message Login message text.
+			 */
+			$message = apply_filters( 'login_message', '' );
+			if ( !empty( $message ) )
+				echo $message . "\n";
+
+			// In case a plugin uses $error rather than the $wp_errors object
+			if ( !empty( $error ) ) {
+				$wp_error->add('error', $error);
+				unset($error);
+			}
+
+			if ( $wp_error->get_error_code() ) {
+				$errors = '';
+				$messages = '';
+				foreach ( $wp_error->get_error_codes() as $code ) {
+					$severity = $wp_error->get_error_data( $code );
+					foreach ( $wp_error->get_error_messages( $code ) as $error_message ) {
+						if ( 'message' == $severity )
+							$messages .= '	' . $error_message . "<br />\n";
+						else
+							$errors .= '	' . $error_message . "<br />\n";
+					}
+				}
+				if ( ! empty( $errors ) ) {
+					/**
+					 * Filters the error messages displayed above the login form.
+					 *
+					 * @since 2.1.0
+					 *
+					 * @param string $errors Login error message.
+					 */
+					echo '<div id="login_error">' . apply_filters( 'login_errors', $errors ) . "</div>\n";
+				}
+				if ( ! empty( $messages ) ) {
+					/**
+					 * Filters instructional messages displayed above the login form.
+					 *
+					 * @since 2.5.0
+					 *
+					 * @param string $messages Login messages.
+					 */
+					echo '<p class="message">' . apply_filters( 'login_messages', $messages ) . "</p>\n";
+				}
+			}
+			echo $form;
+			do_action( 'login_form' );
+			echo $form_end;
 		} else
 	                return $form.$form_end;
 }

@@ -279,6 +279,16 @@
 }
 .template-login {
   padding-bottom: 50px;
+  .entry-content {
+    .messages {
+      color: red;
+      font-weight: 700;
+      text-align: center;
+      p {
+        color: inherit;
+      }
+    }
+  }
   #loginform {
     display: table;
     margin: 0 auto;

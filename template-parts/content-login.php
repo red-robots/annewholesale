@@ -15,6 +15,11 @@
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php the_content(); ?>
+		<?php if(isset($_GET['login'])&&$_GET['login']==="failed"):?>
+			<div class="messages">
+				<p>We're sorry that combination isn't valid!</p>
+			</div>
+		<?php endif;?>
 	</div><!-- .entry-content -->
 	<?php anne_wp_login_form( array('redirect' => home_url()) ); ?>
 </article><!-- #post-## -->

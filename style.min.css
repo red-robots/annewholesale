@@ -1809,6 +1809,8 @@ html[xmlns] .slides{display:block}
 #colophonlogin .footer-inside #social #sociallinks ul li.houzz a:hover{background-position:-120px -30px}
 #colophonlogin .footer-inside .copyright,#colophonlogin .footer-inside .bellaworks{text-align:center}
 .template-login{padding-bottom:50px}
+.template-login .entry-content .messages{color:red;font-weight:700;text-align:center}
+.template-login .entry-content .messages p{color:inherit}
 .template-login #loginform{display:table;margin:0 auto}
 .template-login #loginform label{display:block}
 .template-login #loginform input{display:block}

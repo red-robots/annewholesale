@@ -144,7 +144,7 @@ function ac_first_and_last_menu_class($items) {
 }
 add_filter('wp_nav_menu_objects', 'ac_first_and_last_menu_class');
 
-/*function redirect_login_page() {
+function redirect_login_page() {
 	$login_page  = home_url('/login/');
 	$page_viewed = basename($_SERVER['REQUEST_URI']);
 
@@ -176,7 +176,7 @@ function logout_redirect() {
 	wp_redirect($login_page . "?login=false");
 	exit;
 }
-add_action('wp_logout','logout_redirect'); */
+add_action('wp_logout','logout_redirect');
 
 	function anne_wp_login_form( $args = array() ) {
 		$defaults = array(

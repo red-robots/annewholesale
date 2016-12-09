@@ -306,15 +306,14 @@ jQuery(document).ready(function ($) {
         };
     } )();
     (function($){
-        $row_2 = $('#masthead >.row-2');
+        $row_3 = $('#masthead >.row-3');
         $window = $(window);
         $nav = $('#site-navigation');
         $window.on('scroll', check);
         $window.on('resize', check);
         check();
         function check() {
-            console.log(window.innerWidth);
-            $anchor = $row_2.offset().top + $row_2.outerHeight();
+            $anchor = $row_3.offset().top;
             if ($anchor < $window.scrollTop() && window.innerWidth>600) {
                 $nav.css({
                     position: "fixed",
@@ -325,6 +324,9 @@ jQuery(document).ready(function ($) {
                     backgroundColor: "white",
                     margin: "0",
                     zIndex: 2
+                });
+                $row_3.css({
+                    "height":$nav.outerHeight()
                 });
             }
             if($anchor > $window.scrollTop() || window.innerWidth<600) {
@@ -337,6 +339,9 @@ jQuery(document).ready(function ($) {
                     backgroundColor: "",
                     margin: "",
                     zIndex: ""
+                });
+                $row_3.css({
+                    "height":""
                 });
             }
         }

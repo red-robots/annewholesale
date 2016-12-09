@@ -53,7 +53,7 @@ if ( $attachment_ids ) {	?>
 
 				<li>
 
-					<?php echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', sprintf( '%s',  $image ), $attachment_id, $post->ID, $image_class ); ?>
+					<?php echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '%s',  $image ), $attachment_id, $post->ID, $image_class ); ?>
 				</li>
 
 
@@ -99,7 +99,7 @@ if ( $attachment_ids ) {	?>
 
 
 				<li>
-					<?php echo wp_get_attachment_image( $attachment_id, apply_filters( 'single_product_small_thumbnail_size', 'shop_thumbnail' ) ); ?>
+					<?php echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', sprintf( '%s',  $image ), $attachment_id, $post->ID, $image_class ); ?>
 				</li>
 
 

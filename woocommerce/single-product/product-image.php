@@ -28,17 +28,27 @@ global $post, $product;
 	// Get gallery count
 	$attachment_ids = $product->get_gallery_attachment_ids();
 	// If there are gallery images....
-	if ( $attachment_ids ) {
-		do_action( 'woocommerce_product_thumbnails' );
-	} else { // else show single image.
+	$image = get_field( "popup_image" );
 	?>
 
 	<?php
-		if ( has_post_thumbnail() ) {
+	if ($image) {
+			echo apply_filters(
+				'woocommerce_single_product_image_html',
+				sprintf(
+					'<img src="%s" alt="%s">',
+					$image['url'],
+					$image['alt']
+				),
+				$post->ID
+			);
+	} elseif ( $attachment_ids ) {
+		do_action( 'woocommerce_product_thumbnails' );
+	} elseif ( has_post_thumbnail() ) {
 			$attachment_count = count( $product->get_gallery_attachment_ids() );
 			$gallery          = $attachment_count > 0 ? '[product-gallery]' : '';
 			$props            = wc_get_product_attachment_props( get_post_thumbnail_id(), $post );
-			$image            = get_the_post_thumbnail( $post->ID, 'large', array(
+			$image            = get_the_post_thumbnail( $post->ID, 'full', array(
 				'title'	 => $props['title'],
 				'alt'    => $props['alt'],
 			) );
@@ -53,7 +63,5 @@ global $post, $product;
 		} else {
 			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $post->ID );
 		}
-
-		do_action( 'woocommerce_product_thumbnails' );
-	} //end no gallery?>
+	?>
 </div>

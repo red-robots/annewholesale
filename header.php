@@ -109,9 +109,11 @@
 			</div><!-- search -->
 		</div><!--.row-2-->
 
-		<nav id="site-navigation" class="main-navigation row-3" role="navigation">
-			<h3 class="menu-toggle"><?php _e( 'Navigation', 'twentytwelve' ); ?></h3>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-		</nav><!-- #site-navigation .row-3-->
+		<div class="site-nav-wrapper row-3">
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<h3 class="menu-toggle"><?php _e( 'Navigation', 'twentytwelve' ); ?></h3>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+			</nav><!-- #site-navigation .row-3-->
+		</div><!--.site-nav-wrapper-->
 
 	</header><!-- #masthead -->

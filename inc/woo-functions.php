@@ -12,6 +12,24 @@ function bella_dequeue_styles( $enqueue_styles ) {
 	return $enqueue_styles;
 }
 
+add_action('init','bella_remove_defunct_product_link');
+function bella_remove_defunct_product_link(){
+	remove_action('woocommerce_before_shop_loop_item','woocommerce_template_loop_product_link_open',10);
+	remove_action('woocommerce_after_shop_loop_item','woocommerce_template_loop_product_link_close',5);
+}
+add_action('init','bella_remove_default_loop_title');
+function bella_remove_default_loop_title(){
+	remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title',10);
+}
+function bella_add_link_to_product(){
+	woocommerce_template_loop_product_link_open();
+	echo '<h3>';
+	the_title();
+	echo '</h3>';
+	woocommerce_template_loop_product_link_close();
+}
+add_action('woocommerce_shop_loop_item_title','bella_add_link_to_product',10);
+
 add_action( 'init', 'bella_remove_the_archive_add_to_cart' );
 function bella_remove_the_archive_add_to_cart() {
 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart',10 );
@@ -85,32 +103,23 @@ add_filter( 'woocommerce_related_products_args', 'wc_remove_related_products', 1
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail' );
 
 function change_image_shown( $args ) {
+	global $product;
 	$product_title = sanitize_title_with_dashes( get_the_title() );
-	if ( get_field( 'alternate_featured_image' ) != "" ) {
-		// Get field Name
-		$image   = get_field( 'alternate_featured_image' );
-		$url     = $image['url'];
-		$title   = $image['title'];
-		$alt     = $image['alt'];
-		$caption = $image['caption'];
-		$size    = 'medium';
-		$thumb   = $image['sizes'][ $size ];
-		$width   = $image['sizes'][ $size . '-width' ];
-		$height  = $image['sizes'][ $size . '-height' ];
-
-
-		echo '<div class="image-wrapper"><img src="' . $thumb . '" /><div class="overlay"><a class="surrounding quickview" href="#' . $product_title . '-popup">Quick View</a></div><!--.overlay--></div><!--.image-wrapper-->';
-
-	} elseif ( has_post_thumbnail() ) {
 		echo '<div class="image-wrapper">';
-		the_post_thumbnail('medium');
+		woocommerce_template_loop_product_link_open();
+		if(has_post_thumbnail()){
+			the_post_thumbnail('medium');
+		} else {
+			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $product->post->ID);
+		}
+		woocommerce_template_loop_product_link_close();
 		echo '<div class="overlay"><a class="surrounding quickview" href="#' . $product_title . '-popup">Quick View</a></div><!--.overlay--></div><!--.image-wrapper-->';
-	}
 }
 
 add_filter( 'woocommerce_before_shop_loop_item_title', 'change_image_shown', 10 );
 
 function bella_popup_view() {
+	global $product;
 	?>
 	<div style="display:none;">
 		<article class="popup-view woocommerce" id="<?php echo sanitize_title_with_dashes( get_the_title() ) . '-popup'; ?>">
@@ -118,26 +127,15 @@ function bella_popup_view() {
 			</div><!--.top-bar-->
 			<div id="product-<?php the_ID(); ?>" class="product">
 				<div class="images">
-					<?php if ( get_field( "popup_image" ) ) {
-						$alt = ( get_post( get_field( "popup_image" ) ) !== null ) ? get_post( get_field( "popup_image" ) )->post_title : "";
-						echo '<img src="' . wp_get_attachment_image_src( get_field( "popup_image" ), "full" )[0] . '" alt="' . $alt . '">';
-					} elseif ( get_field( 'alternate_featured_image' ) != "" ) {
-						// Get field Name
-						$image   = get_field( 'alternate_featured_image' );
-						$url     = $image['url'];
-						$title   = $image['title'];
-						$alt     = $image['alt'];
-						$caption = $image['caption'];
-						$size    = 'medium';
-						$thumb   = $image['sizes'][ $size ];
-						$width   = $image['sizes'][ $size . '-width' ];
-						$height  = $image['sizes'][ $size . '-height' ];
-
-						echo '<img src="' . $thumb . '" />';
-
+					<?php
+					$image = get_field( "popup_image" );
+					if ( $image) {
+							echo '<img src="' . $image['url'] . '" alt="' . $image['alt'] . '">';
 					} elseif ( has_post_thumbnail() ) {
-						the_post_thumbnail();
-					} ?>
+						the_post_thumbnail('full');
+					} else {
+						echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $product->post->ID);
+					}?>
 				</div><!--.images-->
 				<div class="summary entry-summary">
 					<?php

@@ -18,7 +18,7 @@
 		<?php $sub_heading_1 = get_field("sub_heading_1");
 		if($sub_heading_1):?>
 			<h2><?php echo $sub_heading_1;?></h2>
-		<?php endif;
+		<?php endif;?>
 		<?php if(isset($_GET['login'])&&$_GET['login']==="failed"):?>
 			<div class="messages">
 				<p>We're sorry that combination isn't valid!</p>

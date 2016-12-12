@@ -17,7 +17,7 @@
 		<?php the_content(); ?>
 		<?php $sub_heading_1 = get_field("sub_heading_1");
 		if($sub_heading_1):?>
-			<h2><?php echo $sub_heading_1;?></h2>
+			<h2 class="cat-title"><?php echo $sub_heading_1;?></h2>
 		<?php endif;?>
 		<?php if(isset($_GET['login'])&&$_GET['login']==="failed"):?>
 			<div class="messages">
@@ -27,7 +27,7 @@
 		<?php anne_wp_login_form( array('redirect' => home_url()) ); ?>
 		<?php $sub_heading_2 = get_field("sub_heading_2");
 		if($sub_heading_2):?>
-			<h2><?php echo $sub_heading_2;?></h2>
+			<h2 class="cat-title"><?php echo $sub_heading_2;?></h2>
 		<?php endif;
 		echo do_shortcode('[gravityform id="1" title="false" description="false"]');?>
 	</div><!-- .entry-content -->

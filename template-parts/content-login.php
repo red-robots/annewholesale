@@ -20,6 +20,11 @@
 				<p>We're sorry that combination isn't valid!</p>
 			</div>
 		<?php endif;?>
+		<?php anne_wp_login_form( array('redirect' => home_url()) ); ?>
+		<?php $sub_heading = get_field("sub_heading");
+		if($sub_heading):?>
+			<h2><?php echo $sub_heading;?></h2>
+		<?php endif;
+		echo do_shortcode('[gravityform id="1" title="false" description="false"]');?>
 	</div><!-- .entry-content -->
-	<?php anne_wp_login_form( array('redirect' => home_url()) ); ?>
 </article><!-- #post-## -->

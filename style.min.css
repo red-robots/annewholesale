@@ -1374,6 +1374,7 @@ html[xmlns] .flexslider .slides{display:block}
 }.widget{margin:0 0 1.5em}
 .widget select{max-width:100%}
 .clear-bottom:after{content:"";display:block;clear:both}
+.thankyou-hidden{display:none}
 #page{width:100%;margin:0}
 #main{margin:0 auto;width:90%}
 @media screen and (min-width:1040px){#main{width:1040px;margin:0 auto}

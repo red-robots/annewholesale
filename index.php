@@ -73,7 +73,13 @@ get_header(); ?>
 						 * @hooked woocommerce_catalog_ordering - 30
 						 */
 						//do_action( 'woocommerce_before_shop_loop' );
-						?>
+							if ( $term->term_id === 7) {
+								add_filter( 'loop_shop_columns', 'return_3' );
+								function return_3() {
+									return 3;
+								}
+							}
+							?>
 
 						<?php woocommerce_product_loop_start(); ?>
 
@@ -88,6 +94,9 @@ get_header(); ?>
 						<?php woocommerce_product_loop_end(); ?>
 
 						<?php
+							if ( $term->term_id === 7) {
+								remove_filter( 'loop_shop_columns', 'return_3' );
+							}
 						/**
 						 * woocommerce_after_shop_loop hook.
 						 *

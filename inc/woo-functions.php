@@ -82,17 +82,6 @@ add_action( 'init', 'jk_remove_wc_breadcrumbs' );
 function jk_remove_wc_breadcrumbs() {
 	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 }
-
-add_filter( 'loop_shop_columns', 'loop_columns' );
-if ( ! function_exists( 'loop_columns' ) ) {
-	function loop_columns() {
-		if ( is_product_category( 'notecards' ) ) {
-			return 2;
-		} else {
-			return 4;
-		}
-	}
-}
 // Disable Related Products
 function wc_remove_related_products( $args ) {
 	return array();
@@ -108,7 +97,7 @@ function change_image_shown( $args ) {
 		echo '<div class="image-wrapper">';
 		woocommerce_template_loop_product_link_open();
 		if(has_post_thumbnail()){
-			the_post_thumbnail('medium');
+			the_post_thumbnail('large');
 		} else {
 			echo apply_filters( 'woocommerce_single_product_image_html', sprintf( '<img src="%s" alt="%s" />', wc_placeholder_img_src(), __( 'Placeholder', 'woocommerce' ) ), $product->post->ID);
 		}
@@ -297,4 +286,43 @@ function bella_ajax_get_checkout_popup() {
 	$xmlResponse = new WP_Ajax_Response( $response );
 	$xmlResponse->send();
 	die( 0 );
+}
+
+/**
+ * This section adds custom purchase order number to the checkout process
+ */
+add_action( 'woocommerce_after_order_notes', 'bella_custom_checkout_field' );
+
+function bella_custom_checkout_field( $checkout ) {
+
+	echo '<div id="my_custom_checkout_field"><h2>' . __('PO#') . '</h2>';
+
+	woocommerce_form_field( 'purchase_order_num', array(
+		'type'          => 'text',
+		'class'         => array('form-row-wide'),
+		'label'         => __('Fill in this field with purchase order number'),
+		'placeholder'   => __('Enter purchase order num (optional)'),
+	), $checkout->get_value( 'purchase_order_num' ));
+
+	echo '</div>';
+}
+
+/**
+ * Update the order meta with field value
+ */
+add_action( 'woocommerce_checkout_update_order_meta', 'bella_custom_checkout_field_update_order_meta' );
+
+function bella_custom_checkout_field_update_order_meta( $order_id ) {
+	if ( ! empty( $_POST['purchase_order_num'] ) ) {
+		update_post_meta( $order_id, 'purchase_order_num', sanitize_text_field( $_POST['purchase_order_num'] ) );
+	}
+}
+
+/**
+ * Display field value on the order edit page
+ */
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'bella_custom_checkout_field_display_admin_order_meta', 10, 1 );
+
+function bella_custom_checkout_field_display_admin_order_meta($order){
+	echo '<p><strong>'.__('PO#').':</strong> ' . get_post_meta( $order->id, 'purchase_order_num', true ) . '</p>';
 }

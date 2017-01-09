@@ -1374,7 +1374,7 @@ html[xmlns] .flexslider .slides{display:block}
 }.widget{margin:0 0 1.5em}
 .widget select{max-width:100%}
 .clear-bottom:after{content:"";display:block;clear:both}
-.thankyou-hidden{display:none}
+.thankyou-hidden,.wholesale-signup-hidden{display:none}
 #page{width:100%;margin:0}
 #main{margin:0 auto;width:90%}
 @media screen and (min-width:1040px){#main{width:1040px;margin:0 auto}
@@ -1760,6 +1760,8 @@ html[xmlns] .slides{display:block}
 .template-index #content .product:nth-child(even){float:right}
 }@media screen and (min-width:900px){.template-index #content .product{float:left;margin:0 3.8% 2.992em 0;width:22.05%}
 .template-index #content .product:nth-child(even){float:left}
+}@media screen and (min-width:900px){.template-index #content .product.product_cat-luxury-candles{float:left;margin:0 8% 2.992em 0;width:28%}
+.template-index #content .product.product_cat-luxury-candles:nth-child(even){float:left}
 }.template-index #content .product.last{margin-right:0}
 .template-index #content .product h3{text-align:center}
 .template-index #content .product .image-wrapper .overlay{text-transform:uppercase;text-align:center;background-color:rgba(150,167,166,0.8);width:100%;bottom:0;left:0;position:absolute;display:none;color:white;font-size:16px;font-family:FuturaPT-Light;font-weight:300}
@@ -1810,12 +1812,17 @@ html[xmlns] .slides{display:block}
 #colophonlogin .footer-inside #social #sociallinks ul li.houzz a:hover{background-position:-120px -30px}
 #colophonlogin .footer-inside .copyright,#colophonlogin .footer-inside .bellaworks{text-align:center}
 .template-login{padding-bottom:50px}
+.template-login .entry-content h2{font-size:20px}
+.template-login .entry-content h2.center{text-align:center}
 .template-login .entry-content .messages{color:red;font-weight:700;text-align:center}
 .template-login .entry-content .messages p{color:inherit}
-.template-login #loginform{display:table;margin:0 auto}
-.template-login #loginform label{display:block}
-.template-login #loginform input{display:block}
-.blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
+.template-login #loginform,.template-login #forgotform{display:table;margin:0 auto}
+.template-login #loginform label,.template-login #forgotform label{display:block}
+.template-login #loginform input,.template-login #forgotform input{display:block}
+#colorbox #wholesale-signup{background-color:white;padding:10px;color:#948c82}
+#colorbox #wholesale-signup h2{font-size:20px;color:#96a7a6;font-weight:300}
+@media screen and (min-width:600px){#colorbox #wholesale-signup{padding:40px}
+}.blog .format-aside .entry-title,.archive .format-aside .entry-title{display:none}
 .comment-content a{word-wrap:break-word}
 .bypostauthor{display:block}
 .infinite-scroll .posts-navigation,.infinite-scroll.neverending .site-footer{display:none}

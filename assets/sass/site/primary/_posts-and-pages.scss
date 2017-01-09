@@ -22,6 +22,16 @@
           float: left;
         }
       }
+      &.product_cat-luxury-candles {
+        @media screen and (min-width: 900px) {
+          float: left;
+          margin: 0 8% 2.992em 0;
+          width: 28%;
+          &:nth-child(even) {
+            float: left;
+          }
+        }
+      }
       &.last {
         margin-right: 0;
       }
@@ -280,6 +290,12 @@
 .template-login {
   padding-bottom: 50px;
   .entry-content {
+    h2 {
+      font-size: 20px;
+      &.center {
+        text-align: center;
+      }
+    }
     .messages {
       color: red;
       font-weight: 700;
@@ -289,7 +305,7 @@
       }
     }
   }
-  #loginform {
+  #loginform, #forgotform {
     display: table;
     margin: 0 auto;
     label {
@@ -298,5 +314,19 @@
     input {
       display: block;
     }
+  }
+}
+
+#colorbox #wholesale-signup {
+  background-color: white;
+  padding: 10px;
+  color: #948c82;
+  h2 {
+    font-size: 20px;
+    color: #96A7A6;
+    font-weight: 300;
+  }
+  @media screen and (min-width: 600px) {
+    padding: 40px;
   }
 }

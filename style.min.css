@@ -1618,6 +1618,7 @@ embed,iframe,object,video{max-width:100%}
 .alignleft{float:left}
 .alignright{float:right}
 .aligncenter{display:block;margin-left:auto;margin-right:auto}
+.my_custom_checkout_field h2{font-size:20px}
 html{font-size:87.5%}
 body{font-size:14px;font-family:"Open Sans",Helvetica,Arial,sans-serif;font-weight:300;text-rendering:optimizeLegibility;color:#444}
 body.custom-font-enabled{font-family:"Open Sans",Helvetica,Arial,sans-serif}

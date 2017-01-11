@@ -326,3 +326,73 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'bella_custom_
 function bella_custom_checkout_field_display_admin_order_meta($order){
 	echo '<p><strong>'.__('PO#').':</strong> ' . get_post_meta( $order->id, 'purchase_order_num', true ) . '</p>';
 }
+
+/* ----------------------------------------------
+------------Filter based on order date------------
+--------------------------------------------------
+*/
+add_filter('query_vars', 'bella_custom_month_register_query_vars' );
+function bella_custom_month_register_query_vars( $qvars ){
+	//Add these query variables
+	$qvars[] = 'bella_custom_month';
+	return $qvars;
+}
+
+add_action( 'restrict_manage_posts', 'bella_custom_month_restrict_posts_by_metavalue' );
+function bella_custom_month_restrict_posts_by_metavalue($post_type) {
+	if($post_type && strcmp($post_type,'shop_order')===0) {
+		$months = bella_custom_month_get_months();
+			$selected = get_query_var( 'bella_custom_month' );
+			$output   = "<select style='width:150px' name='bella_custom_month' class='postform'>\n";
+			$output .= '<option ' . selected( $selected, 0, false ) . ' value="">' . __( 'Filter by Order Date' ) . '</option>';
+			if ( ! empty( $months ) ) {
+				foreach ( $months as $month ):
+					$value    = esc_attr( $month->year . '' . $month->month );
+					$month_dt = new DateTime( $month->year . '-' . $month->month . '-01' );
+					$output .= "<option value='{$value}' " . selected( $selected, $value, false ) . '>' . $month_dt->format( 'F Y' ) . '</option>';
+				endforeach;
+			}
+			$output .= "</select>\n";
+			echo $output;
+	}
+}
+
+add_action( 'pre_get_posts', 'bella_custom_month_pre_get_posts' );
+function bella_custom_month_pre_get_posts( $query ) {
+
+	//Only alter query if custom variable is set.
+	$month_str = $query->get('bella_custom_month');
+	if( !empty($month_str) ){
+
+		//Be careful not override any existing meta queries.
+		$meta_query = $query->get('meta_query');
+		if( empty($meta_query) )
+			$meta_query = array();
+
+		//Convert 2012/05 into a datetime object get the first and last days of that month in yyyy/mm/dd format
+		$month = new DateTime($month_str.'01');
+
+		//Get posts with date between the first and last of given month
+		$meta_query[] = array(
+			'key' => '_delivery_date',
+			'value' => array($month->format('Y-m-d'),$month->format('Y-m-t')),
+			'compare' => 'BETWEEN',
+            'type'=> 'numeric'
+		);
+		$query->set('meta_query',$meta_query);
+	}
+}
+
+function bella_custom_month_get_months(){
+	global $wpdb;
+	$months = wp_cache_get( 'bella_custom_month' );
+	if ( false === $months ) {
+		$query = "SELECT YEAR(meta_value) AS `year`, DATE_FORMAT(meta_value,'%m') AS `month`,
+                DATE_FORMAT(meta_value,'%d') AS `day`, count(post_id) as posts 
+                FROM $wpdb->postmeta WHERE meta_key ='_delivery_date'           
+                GROUP BY YEAR(meta_value), MONTH(meta_value) ORDER BY meta_value DESC";
+		$months = $wpdb->get_results($query);
+		wp_cache_set( 'bella_custom_month', $months );
+	}
+	return $months;
+}

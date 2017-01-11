@@ -344,7 +344,7 @@ function bella_custom_month_restrict_posts_by_metavalue($post_type) {
 		$months = bella_custom_month_get_months();
 			$selected = get_query_var( 'bella_custom_month' );
 			$output   = "<select style='width:150px' name='bella_custom_month' class='postform'>\n";
-			$output .= '<option ' . selected( $selected, 0, false ) . ' value="">' . __( 'Filter by Order Date' ) . '</option>';
+			$output .= '<option ' . selected( $selected, 0, false ) . ' value="">' . __( 'Filter by Delivery Date' ) . '</option>';
 			if ( ! empty( $months ) ) {
 				foreach ( $months as $month ):
 					$value    = esc_attr( $month->year . '' . $month->month );

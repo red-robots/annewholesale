@@ -58,12 +58,12 @@ jQuery(document).ready(function ($) {
      *	Smooth Scroll to Anchor
      *
      ------------------------------------*/
-    $('a').click(function () {
+    /*$('a').click(function () {
         $('html, body').animate({
             scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top
         }, 500);
         return false;
-    });
+    });*/
 
 
     function anchor_scroll_capsule() {
@@ -162,6 +162,9 @@ jQuery(document).ready(function ($) {
             var id = $form.find('input[name="add-to-cart"]').attr('value');
             var qty = $form.find('input[name="quantity"]').attr('value');
             //add to cart
+            if($(e.target).parents('#colorbox').length!==0){
+                $.colorbox.close();
+            }
             jQuery.post(
                 bellaajaxurl.url,
                 {

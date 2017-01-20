@@ -1202,8 +1202,9 @@ footer#colophon {
         }
         a.surrounding {
           display: block;
+          color: inherit;
+          text-decoration: none;
           &:hover {
-            text-decoration: none;
             cursor: pointer;
           }
         }

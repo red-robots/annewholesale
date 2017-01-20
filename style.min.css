@@ -1577,8 +1577,8 @@ footer#colophon .footer-inside .footer-right p{font-size:13px;line-height:1.6;ma
 .popup-checkout .product-box .product-info .buttons{text-align:center}
 .popup-checkout .product-box .product-info .checkout.button{position:relative;font-size:12pt;text-align:center;background-color:#96a7a6;color:white;text-transform:uppercase;padding:10px 20px;display:inline-block;margin:10px;font-family:FuturaPT-Light;font-weight:600}
 @media screen and (min-width:600px){.popup-checkout .product-box .product-info .checkout.button{margin:10px 0 0 10px;float:left}
-}.popup-checkout .product-box .product-info .checkout.button a.surrounding{display:block}
-.popup-checkout .product-box .product-info .checkout.button a.surrounding:hover{text-decoration:none;cursor:pointer}
+}.popup-checkout .product-box .product-info .checkout.button a.surrounding{display:block;color:inherit;text-decoration:none}
+.popup-checkout .product-box .product-info .checkout.button a.surrounding:hover{cursor:pointer}
 .popup-checkout .product-box .product-info .continue.button{position:relative;font-size:12pt;text-align:center;background-color:#96a7a6;color:white;text-transform:uppercase;padding:10px 20px;display:inline-block;margin:10px;font-family:FuturaPT-Light;font-weight:600;cursor:pointer}
 @media screen and (min-width:600px){.popup-checkout .product-box .product-info .continue.button{margin:10px 0;float:left}
 }.popup-checkout .bottom-bar{box-sizing:border-box;position:relative;padding:10px 30px 20px 30px;width:100%;border-top:1px solid #96a7a6}

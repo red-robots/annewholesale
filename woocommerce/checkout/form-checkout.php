@@ -39,11 +39,11 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 		<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 		<div class="col2-set" id="customer_details">
-			<div class="row-1">
+			<div class="col-1">
 				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 			</div>
 
-			<div class="row-2">
+			<div class="col-2">
 				<?php do_action( 'woocommerce_checkout_billing' ); ?>
 			</div>
 		</div>

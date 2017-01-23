@@ -314,6 +314,8 @@ jQuery(document).ready(function ($) {
             $row_3 = $('#masthead >.row-3');
             $window = $(window);
             $nav = $('#site-navigation');
+            $cart = $('#masthead >.row-1 >.column-3 >.wrapper >.cart');
+            $popup = $('#masthead >.row-1 >.column-3 >.popup-cart');
             $window.on('scroll', check);
             $window.on('resize', check);
             check();
@@ -322,13 +324,25 @@ jQuery(document).ready(function ($) {
                 if ($anchor < $window.scrollTop() && window.innerWidth > 600) {
                     $nav.css({
                         position: "fixed",
-                        top: "0",
+                        top: "20px",
                         left: "0",
                         width: "100%",
-                        padding: "0 5%",
+                        padding: "0 10%",
                         backgroundColor: "white",
                         margin: "0",
                         zIndex: 2
+                    });
+                    $cart.css({
+                        position: "fixed",
+                        top: "50px",
+                        right: "2%",
+                        zIndex: 3
+                    });
+                    $popup.css({
+                        position: "fixed",
+                        top: "90px",
+                        right: "2%",
+                        zIndex: 3
                     });
                     $row_3.css({
                         "height": $nav.outerHeight()
@@ -343,6 +357,18 @@ jQuery(document).ready(function ($) {
                         padding: "",
                         backgroundColor: "",
                         margin: "",
+                        zIndex: ""
+                    });
+                    $cart.css({
+                        position: "",
+                        top: "",
+                        right: "",
+                        zIndex: ""
+                    });
+                    $popup.css({
+                        position: "",
+                        top: "",
+                        right: "",
                         zIndex: ""
                     });
                     $row_3.css({

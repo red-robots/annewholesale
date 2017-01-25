@@ -380,15 +380,17 @@ jQuery(document).ready(function ($) {
     })(jQuery);
 
     (function () {
-        jQuery(document).bind('gform_confirmation_loaded', function (event, formId) {
-            $.colorbox({
-                rel: 'gal',
-                inline: true,
-                href: "#wholesale-signup",
-                width: '90%',
-                maxWidth: '960px',
+        if($('#wholesale-signup').length > 0) {
+            jQuery(document).bind('gform_confirmation_loaded', function (event, formId) {
+                $.colorbox({
+                    rel: 'gal',
+                    inline: true,
+                    href: "#wholesale-signup",
+                    width: '90%',
+                    maxWidth: '960px',
+                });
             });
-        });
+        }
     })();
 
 });// END #####################################    END

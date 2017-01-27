@@ -409,3 +409,9 @@ function bella_custom_month_get_months() {
 
 	return $months;
 }
+
+add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_method',10,1);
+function bella_custom_shipping_method($title){
+    $title = 'UPS';
+	return $title;
+}

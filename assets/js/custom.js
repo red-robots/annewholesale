@@ -323,9 +323,7 @@ jQuery(document).ready(function ($) {
             function check() {
                 $anchor = $row_3.offset().top;
                 html_margin = $html.length ? parseFloat($html.css('marginTop')) : 0;
-                console.log($window.scrollTop() + " " + $anchor);
                 if ($anchor < $window.scrollTop() + html_margin && window.innerWidth > 600) {
-                    console.log("here");
                     $nav.css({
                         position: "fixed",
                         top: html_margin+"px",

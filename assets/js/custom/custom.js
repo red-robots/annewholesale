@@ -311,6 +311,7 @@ jQuery(document).ready(function ($) {
     })();
     (function ($) {
         if ($('#masthead >.row-3').length > 0) {
+            $html = $('html');
             $row_3 = $('#masthead >.row-3');
             $window = $(window);
             $nav = $('#site-navigation');
@@ -321,10 +322,13 @@ jQuery(document).ready(function ($) {
             check();
             function check() {
                 $anchor = $row_3.offset().top;
-                if ($anchor < $window.scrollTop() && window.innerWidth > 600) {
+                html_margin = $html.length ? parseFloat($html.css('marginTop')) : 0;
+                console.log($window.scrollTop() + " " + $anchor);
+                if ($anchor < $window.scrollTop() + html_margin && window.innerWidth > 600) {
+                    console.log("here");
                     $nav.css({
                         position: "fixed",
-                        top: "20px",
+                        top: html_margin+"px",
                         left: "0",
                         width: "100%",
                         padding: "0 10%",
@@ -334,13 +338,13 @@ jQuery(document).ready(function ($) {
                     });
                     $cart.css({
                         position: "fixed",
-                        top: "50px",
+                        top: html_margin+25+"px",
                         right: "2%",
                         zIndex: 3
                     });
                     $popup.css({
                         position: "fixed",
-                        top: "90px",
+                        top: html_margin+65+"px",
                         right: "2%",
                         zIndex: 3
                     });
@@ -348,7 +352,7 @@ jQuery(document).ready(function ($) {
                         "height": $nav.outerHeight()
                     });
                 }
-                if ($anchor > $window.scrollTop() || window.innerWidth < 600) {
+                if ($anchor > $window.scrollTop() + html_margin || window.innerWidth < 600) {
                     $nav.css({
                         position: "",
                         top: "",
@@ -372,7 +376,7 @@ jQuery(document).ready(function ($) {
                         zIndex: ""
                     });
                     $row_3.css({
-                        "height": ""
+                        height: ""
                     });
                 }
             }

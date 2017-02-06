@@ -414,3 +414,16 @@ add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_meth
 function bella_custom_shipping_method($title){
     return 'UPSG';
 }
+
+add_action('manage_shop_order_posts_custom_column', 'bella_custom_shop_order_posts_custom_column',10,2);
+function bella_custom_shop_order_posts_custom_column($column, $post_id){
+    switch($column) {
+        case 'company_name':
+            echo get_post_meta($post_id,'_billing_company',true);
+            break;
+    }
+}
+add_filter('manage_edit-shop_order_columns', 'bella_custom_edit_shop_order_columns',10,1);
+function bella_custom_edit_shop_order_columns($columns) {
+    return array_merge($columns,array('company_name'=>'Company Name'));
+}

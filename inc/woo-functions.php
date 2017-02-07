@@ -432,8 +432,8 @@ add_action('woocommerce_email_after_order_table','bella_custom_woocommerce_email
 function bella_custom_woocommerce_email_after_order_table(){
     echo '<p>Paid in full</p>';
 }
-add_action('woocommerce_order_item_meta_start', 'bella_custom_woocommerce_order_item_meta_start',10,4);
-function bella_custom_woocommerce_order_item_meta_start($item_id, $item, $order, $plain_text){
+add_action('woocommerce_order_item_meta_start', 'bella_custom_woocommerce_order_item_meta_start',10,3);
+function bella_custom_woocommerce_order_item_meta_start($item_id, $item, $order){
 	$product_box_line_1 = get_post_meta($item['product_id'],"product_box_line_1",true );
 	if($product_box_line_1){
 	    echo "<br/>".$product_box_line_1;

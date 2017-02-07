@@ -409,12 +409,12 @@ function bella_custom_month_get_months() {
 
 	return $months;
 }
-
+//custom postal value for csv export
 add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_method',10,1);
 function bella_custom_shipping_method($title){
     return 'UPSG';
 }
-
+//add company name
 add_action('manage_shop_order_posts_custom_column', 'bella_custom_shop_order_posts_custom_column',10,2);
 function bella_custom_shop_order_posts_custom_column($column, $post_id){
     switch($column) {
@@ -426,4 +426,16 @@ function bella_custom_shop_order_posts_custom_column($column, $post_id){
 add_filter('manage_edit-shop_order_columns', 'bella_custom_edit_shop_order_columns',10,1);
 function bella_custom_edit_shop_order_columns($columns) {
     return array_merge($columns,array('company_name'=>'Company Name'));
+}
+
+add_action('woocommerce_email_after_order_table','bella_custom_woocommerce_email_after_order_table',10);
+function bella_custom_woocommerce_email_after_order_table(){
+    echo '<p>Paid in full</p>';
+}
+add_action('woocommerce_order_item_meta_start', 'bella_custom_woocommerce_order_item_meta_start',10,4);
+function bella_custom_woocommerce_order_item_meta_start($item_id, $item, $order, $plain_text){
+	$product_box_line_1 = get_post_meta($item['product_id'],"product_box_line_1",true );
+	if($product_box_line_1){
+	    echo "<br/>".$product_box_line_1;
+	}
 }

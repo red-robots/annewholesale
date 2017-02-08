@@ -160,7 +160,7 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
             var $form = $(this).parents('form.cart').eq(0);
             var id = $form.find('input[name="add-to-cart"]').attr('value');
-            var qty = $form.find('input[name="quantity"]').attr('value');
+            var qty = $form.find('input[name="quantity"]').val();
             //add to cart
             if($(e.target).parents('#colorbox').length!==0){
                 $.colorbox.close();

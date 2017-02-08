@@ -439,3 +439,15 @@ function bella_custom_woocommerce_order_item_meta_start($item_id, $item, $order)
 	    echo "<br/>".$product_box_line_1;
 	}
 }
+function bella_auto_disable_specific_plugins ( $update, $item ) {
+	// Array of plugin slugs to always disable
+	$plugins = array (
+		'woocommerce-customer-order-csv-export',
+	);
+	if ( in_array( $item->slug, $plugins ) ) {
+		return false; // Always disable plugins in this array
+	} else {
+		return $update; // Else, use the normal API response to decide whether to update or not
+	}
+}
+add_filter( 'auto_update_plugin', 'bella_auto_disable_specific_plugins', 10, 2 );

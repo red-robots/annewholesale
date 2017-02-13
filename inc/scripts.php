@@ -21,7 +21,7 @@ function acstarter_scripts() {
 	wp_enqueue_script( 
 			'custom',
 			get_template_directory_uri() . '/assets/js/custom.js', 
-			array(), '20120206', 
+			array(), '20170213',
 			true 
 		);
 	wp_localize_script( 'custom', 'bellaajaxurl', array(

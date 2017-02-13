@@ -428,9 +428,10 @@ function bella_custom_edit_shop_order_columns($columns) {
     return array_merge($columns,array('company_name'=>'Company Name'));
 }
 
-add_action('woocommerce_email_after_order_table','bella_custom_woocommerce_email_after_order_table',10);
-function bella_custom_woocommerce_email_after_order_table(){
+add_action('woocommerce_email_after_order_table','bella_custom_woocommerce_email_after_order_table',10,1);
+function bella_custom_woocommerce_email_after_order_table($order){
     echo '<p>Paid in full</p>';
+    echo '<p>Requested Shipping Date '.(new DateTime(get_post_meta($order->id,'_delivery_date',true)))->format('m-d-Y').'</p>';
 }
 add_action('woocommerce_order_item_meta_start', 'bella_custom_woocommerce_order_item_meta_start',10,3);
 function bella_custom_woocommerce_order_item_meta_start($item_id, $item, $order){
@@ -451,3 +452,14 @@ function bella_auto_disable_specific_plugins ( $update, $item ) {
 	}
 }
 add_filter( 'auto_update_plugin', 'bella_auto_disable_specific_plugins', 10, 2 );
+
+add_filter( 'woocommerce_billing_fields', 'bella_filter_billing_company_name', 10, 1 );
+function bella_filter_billing_company_name( $address_fields ) {
+	$address_fields['billing_company']['required'] = true;
+	return $address_fields;
+}
+add_filter( 'woocommerce_shipping_fields', 'bella_filter_shipping_company_name', 10, 1 );
+function bella_filter_shipping_company_name( $address_fields ) {
+	$address_fields['shipping_company']['required'] = true;
+	return $address_fields;
+}

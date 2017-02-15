@@ -319,6 +319,21 @@ function bella_custom_checkout_field( $checkout ) {
 	echo '</div>';
 }
 
+add_action( 'woocommerce_before_checkout_billing_form', 'bella_custom_checkout_field_2' );
+
+function bella_custom_checkout_field_2( $checkout ) {
+
+	echo '<div id="my_custom_checkout_field_2">';
+
+	woocommerce_form_field( 'bella_contact_name', array(
+		'type'        => 'text',
+		'class'       => array( 'form-row-wide' ),
+		'label'       => __( 'Contact Name' ),
+		'placeholder' => __( 'Enter contact name (optional)' ),
+	), $checkout->get_value( 'bella_contact_name' ) );
+
+	echo '</div>';
+}
 /**
  * Update the order meta with field value
  */
@@ -326,7 +341,18 @@ add_action( 'woocommerce_checkout_update_order_meta', 'bella_custom_checkout_fie
 
 function bella_custom_checkout_field_update_order_meta( $order_id ) {
 	if ( ! empty( $_POST['purchase_order_num'] ) ) {
-		update_post_meta( $order_id, 'purchase_order_num', sanitize_text_field( $_POST['purchase_order_num'] ) );
+		$po_num = $_POST['purchase_order_num'];
+		if ( strlen( $po_num ) > 50 ) {
+			$po_num = substr( $po_num, 0, 50 );
+		}
+		update_post_meta( $order_id, 'purchase_order_num', sanitize_text_field( $po_num ) );
+	}
+	if ( ! empty( $_POST['bella_contact_name'] ) ) {
+		$contact = $_POST['bella_contact_name'];
+		if ( strlen( $contact ) > 50 ) {
+			$contact = substr( $contact, 0, 50 );
+		}
+		update_post_meta( $order_id, 'bella_conctact_name', sanitize_text_field( $contact ) );
 	}
 }
 
@@ -337,6 +363,7 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'bella_custom_
 
 function bella_custom_checkout_field_display_admin_order_meta( $order ) {
 	echo '<p><strong>' . __( 'PO#' ) . ':</strong> ' . get_post_meta( $order->id, 'purchase_order_num', true ) . '</p>';
+	echo '<p><strong>' . __( 'Contact' ) . ':</strong> ' . get_post_meta( $order->id, 'bella_contact_name', true ) . '</p>';
 }
 
 /* ----------------------------------------------
@@ -456,10 +483,14 @@ add_filter( 'auto_update_plugin', 'bella_auto_disable_specific_plugins', 10, 2 )
 add_filter( 'woocommerce_billing_fields', 'bella_filter_billing_company_name', 10, 1 );
 function bella_filter_billing_company_name( $address_fields ) {
 	$address_fields['billing_company']['required'] = true;
+	$address_fields['billing_first_name']['required'] = false;
+	$address_fields['billing_last_name']['required'] = false;
 	return $address_fields;
 }
 add_filter( 'woocommerce_shipping_fields', 'bella_filter_shipping_company_name', 10, 1 );
 function bella_filter_shipping_company_name( $address_fields ) {
 	$address_fields['shipping_company']['required'] = true;
+	$address_fields['shipping_first_name']['required'] = false;
+	$address_fields['shipping_last_name']['required'] = false;
 	return $address_fields;
 }

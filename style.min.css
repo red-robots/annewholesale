@@ -1666,7 +1666,7 @@ h2.related-product{font-size:22px;color:#96a7a6;font-weight:300;margin:0 0 15px 
 span.sku_wrapper{display:none}
 .sku_wrapper,.sku{display:none}
 .continue-shopping{width:auto;display:inline-block;float:right}
-input.qty{max-width:30px}
+input.qty{max-width:45px}
 ul.products li.product h3,.woocommerce-page ul.products li.product h3{color:#96a7a6;text-transform:uppercase;font-weight:300;font-size:14px;line-height:1.6;font-family:FuturaPT-Light;letter-spacing:1px}
 #content div.product div.summary,div.product div.summary,.woocommerce-page #content div.product div.summary,.woocommerce-page div.product div.summary{font-family:"NeutraTextLightAlt",Georgia}
 ul.products li.product h3:hover,.woocommerce-page ul.products li.product h3:hover{color:rgba(150,167,166,0.5)}
@@ -1674,7 +1674,9 @@ ul.products li.product h3:hover,.woocommerce-page ul.products li.product h3:hove
 .woocommerce ul.products li.product .price:hover,.woocommerce-page ul.products li.product .price:hover{color:rgba(150,167,166,0.5)}
 .woocommerce div.product span.price,.woocommerce div.product p.price,#content div.product span.price,#content div.product p.price,.woocommerce-page div.product span.price,.woocommerce-page div.product p.price,.woocommerce-page #content div.product span.price,.woocommerce-page #content div.product p.price{color:#675e50;font-family:"NeutraTextBookAlt",Georgia;font-size:16px}
 div.product .product_title,#content div.product .product_title,.woocommerce-page div.product .product_title,.woocommerce-page #content div.product .product_title{font-family:FuturaPT-Light;font-weight:normal;font-style:normal;font-size:40px;color:#96a7a6;font-weight:300;margin:0 0 10px 0;text-transform:uppercase;line-height:45px;letter-spacing:1px}
-.woocommerce div.product form.cart .button,#content div.product form.cart .button,.woocommerce-page div.product form.cart .button,.woocommerce-page #content div.product form.cart .button{color:#fff;background-color:#96a7a6;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;border:0;text-shadow:none;border-radius:0;width:auto;display:inline-block;font-family:FuturaPT-Light;font-weight:600;text-transform:uppercase;font-size:14px;float:left;margin:0 0 0 20px;padding:15px 20px}
+.woocommerce div.product form.cart div.quantity{margin:0 20px 10px 0}
+.woocommerce div.product form.cart div.quantity input.qty{max-width:50px}
+.woocommerce div.product form.cart .button,#content div.product form.cart .button,.woocommerce-page div.product form.cart .button,.woocommerce-page #content div.product form.cart .button{color:#fff;background-color:#96a7a6;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;border:0;text-shadow:none;border-radius:0;width:auto;display:inline-block;font-family:FuturaPT-Light;font-weight:600;text-transform:uppercase;font-size:14px;float:left;padding:15px 20px}
 div.product form.cart .button:hover,#content div.product form.cart .button:hover,.woocommerce-page div.product form.cart .button:hover,.woocommerce-page #content div.product form.cart .button:hover{background-color:rgba(150,167,166,0.7)}
 .woocommerce .quantity .qty{border-color:#8f92a3;border-radius:0;padding:12px;font-size:18px;box-sizing:initial}
 .woocommerce-message,.woocommerce-page .woocommerce-message{background-color:#6e998e;color:#fff}
@@ -1772,7 +1774,7 @@ html[xmlns] .slides{display:block}
 .template-index #content .product .price-description>.row-1{font-size:16px}
 .template-index #content .product .price-description>.row-2{font-size:14px}
 .template-index #content .product form.cart:after{content:'';clear:both;display:block}
-.template-index #content .product form.cart div.quantity{float:left;margin:0}
+.template-index #content .product form.cart div.quantity{float:left;margin:0 0 10px 0}
 .template-index #content .product form.cart .button{color:#fff;background-color:#96a7a6;-webkit-transition:background-color .3s ease;transition:background-color .3s ease;border:0;text-shadow:none;border-radius:0;width:auto;display:inline-block;font-family:FuturaPT-Light;font-weight:600;text-transform:uppercase;font-size:14px;float:right;margin:0;margin-top:0;padding:18px 20px}
 @media screen and (min-width:900px) and (max-width:1039px){.template-index #content .product form.cart .button{padding:18px 10px}
 }.template-index #content .product form.cart .button:hover{background-color:rgba(150,167,166,0.7)}

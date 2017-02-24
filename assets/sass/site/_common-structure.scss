@@ -3059,7 +3059,7 @@ footer#colophon {
   }
 
   input.qty {
-    max-width: 30px;
+    max-width: 45px;
   }
 
   ul.products li.product h3, .woocommerce-page ul.products li.product h3 {
@@ -3109,7 +3109,12 @@ footer#colophon {
     line-height: 45px;
     letter-spacing: 1px;
   }
-
+  .woocommerce div.product form.cart div.quantity {
+    margin: 0 20px 10px 0;
+  }
+  .woocommerce div.product form.cart div.quantity input.qty {
+    max-width: 50px;
+  }
   .woocommerce div.product form.cart .button, #content div.product form.cart .button, .woocommerce-page div.product form.cart .button, .woocommerce-page #content div.product form.cart .button {
     color: #ffffff;
     /*background-color: rgba(109,153,142,1);*/
@@ -3125,7 +3130,6 @@ footer#colophon {
     text-transform: uppercase;
     font-size: 14px;
     float: left;
-    margin: 0 0 0 20px;
     padding: 15px 20px;
   }
 

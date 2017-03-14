@@ -354,6 +354,12 @@ function bella_custom_checkout_field_update_order_meta( $order_id ) {
 		}
 		update_post_meta( $order_id, 'bella_conctact_name', sanitize_text_field( $contact ) );
 	}
+	$order = new WC_Order( $order_id );
+	$user_id = $order->user_id;
+	$associate = get_user_meta($user_id,'associate',true);
+	if($user_id && $associate){
+	    update_post_meta($order_id, 'bella_associate',sanitize_text_field($associate));
+    }
 }
 
 /**
@@ -364,8 +370,23 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'bella_custom_
 function bella_custom_checkout_field_display_admin_order_meta( $order ) {
 	echo '<p><strong>' . __( 'PO#' ) . ':</strong> ' . get_post_meta( $order->id, 'purchase_order_num', true ) . '</p>';
 	echo '<p><strong>' . __( 'Contact' ) . ':</strong> ' . get_post_meta( $order->id, 'bella_contact_name', true ) . '</p>';
+	$selected = get_post_meta( $order->id, 'bella_associate', true );
+	$associates   = bella_custom_associate_get_associates();
+	$output = '<select name="bella_associate">';
+	$output .= '<option ' . selected( $selected, 0, false ) . ' value=""></option>';
+	if ( ! empty( $associates ) ) {
+		foreach ( $associates as $associate ):
+			$value    = esc_attr( $associate );
+			$output .= "<option value='{$value}' " . selected( $selected, $value, false ) . '>' . $value. '</option>';
+		endforeach;
+	}
+	$output .= "</select>";
+	echo '<p class="form-field form-field-wide"><label>' . __( 'Associate' ) . ':</label>' .  $output. '</p>';
 }
-
+add_action( 'woocommerce_before_save_order_items', 'bella_woocommerce_before_save_order_items', 10, 2 );
+function bella_woocommerce_before_save_order_items( $order_id, $items ) {
+	update_post_meta($order_id, 'bella_associate',sanitize_text_field($items['bella_associate']));
+}
 /* ----------------------------------------------
 ------------Filter based on order date------------
 --------------------------------------------------
@@ -436,6 +457,88 @@ function bella_custom_month_get_months() {
 
 	return $months;
 }
+
+/* ----------------------------------------------
+------------Filter based on associate------------
+--------------------------------------------------
+*/
+add_filter( 'query_vars', 'bella_custom_associate_register_query_vars' );
+function bella_custom_associate_register_query_vars( $qvars ) {
+	//Add these query variables
+	$qvars[] = 'bella_associate';
+	return $qvars;
+}
+
+add_action( 'restrict_manage_posts', 'bella_custom_associate_restrict_posts_by_metavalue' );
+function bella_custom_associate_restrict_posts_by_metavalue( $post_type ) {
+	if ( $post_type && strcmp( $post_type, 'shop_order' ) === 0 ) {
+		$associates   = bella_custom_associate_get_associates();
+		$selected = get_query_var( 'bella_associate' );
+		$output   = "<select style='width:150px' name='bella_associate' class='postform'>\n";
+		$output .= '<option ' . selected( $selected, 0, false ) . ' value="">' . __( 'Filter by Associate' ) . '</option>';
+		if ( ! empty( $associates ) ) {
+			foreach ( $associates as $associate ):
+				$value    = esc_attr( $associate );
+				$output .= "<option value='{$value}' " . selected( $selected, $value, false ) . '>' . $value. '</option>';
+			endforeach;
+		}
+		$output .= "</select>\n";
+		echo $output;
+	}
+}
+
+add_action( 'pre_get_posts', 'bella_custom_associate_pre_get_posts' );
+function bella_custom_associate_pre_get_posts( $query ) {
+
+	//Only alter query if custom variable is set.
+	$associate = $query->get( 'bella_associate' );
+	if ( ! empty( $associate ) ) {
+
+		//Be careful not override any existing meta queries.
+		$meta_query = $query->get( 'meta_query' );
+		if ( empty( $meta_query ) ) {
+			$meta_query = array();
+		}
+
+		//Get posts with date between the first and last of given month
+		$meta_query[] = array(
+			'key'     => 'bella_associate',
+			'value'   => $associate,
+			'compare'    => 'LIKE',
+		);
+		$query->set( 'meta_query', $meta_query );
+	}
+}
+function bella_get_acf_key($field_name){
+	global $wpdb;
+
+	return $wpdb->get_var("
+        SELECT post_name
+        FROM $wpdb->posts
+        WHERE post_type='acf-field' AND post_excerpt='$field_name';
+    ");
+}
+function bella_custom_associate_get_associates() {
+    $field_key = bella_get_acf_key('associate');
+    $field = get_field_object($field_key);
+	global $wpdb;
+	$associates = wp_cache_get( 'bella_associates' );
+	if ( false === $associates ) {
+		$query  = "SELECT meta_value AS `name` FROM $wpdb->postmeta WHERE meta_key ='bella_associate' 
+                    UNION
+                    SELECT meta_value AS 'name' FROM $wpdb->usermeta WHERE meta_key='associate'";
+		$associates = $wpdb->get_results( $query );
+		$associates_temp = array();
+		foreach($associates as $associate){
+		    $associates_temp[] = $associate->name;
+        }
+		$associates = array_unique(array_merge($associates_temp,array_keys($field['choices'])));
+		wp_cache_set( 'bella_associates', $associates );
+	}
+
+	return $associates;
+}
+
 //custom postal value for csv export
 add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_method',10,1);
 function bella_custom_shipping_method($title){
@@ -444,15 +547,18 @@ function bella_custom_shipping_method($title){
 //add company name
 add_action('manage_shop_order_posts_custom_column', 'bella_custom_shop_order_posts_custom_column',10,2);
 function bella_custom_shop_order_posts_custom_column($column, $post_id){
-    switch($column) {
-        case 'company_name':
-            echo get_post_meta($post_id,'_billing_company',true);
-            break;
-    }
+	switch($column) {
+		case 'company_name':
+			echo get_post_meta($post_id,'_billing_company',true);
+			break;
+		case 'associate':
+			echo get_post_meta($post_id,'bella_associate',true);
+			break;
+	}
 }
 add_filter('manage_edit-shop_order_columns', 'bella_custom_edit_shop_order_columns',10,1);
 function bella_custom_edit_shop_order_columns($columns) {
-    return array_merge($columns,array('company_name'=>'Company Name'));
+	return array_merge($columns,array('company_name'=>'Company Name','associate'=>'Associate'));
 }
 
 add_action('woocommerce_email_after_order_table','bella_custom_woocommerce_email_after_order_table',10,1);

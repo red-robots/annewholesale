@@ -335,3 +335,31 @@ add_action('wp_logout','logout_redirect',0);
 		} else
 	                return $form.$form_end;
 }
+
+function custom_access_restrictor($query) {
+	$current_user = wp_get_current_user();
+	$id = $current_user->ID;
+	$meta_query = $query->get( 'meta_query' );
+	if ( empty( $meta_query ) ) {
+		$meta_query = array();
+	}
+	if ( is_admin() && strcmp($query->get('post_type'),'shop_order')===0) {
+		if ($id === 19 ) {
+			$meta_query[] = array(
+				'key'     => 'bella_associate',
+				'value'   => 'jessica',
+				'compare'    => 'LIKE',
+			);
+		}
+		if ($id  === 41) {
+			$meta_query[] = array(
+				'key'     => 'bella_associate',
+				'value'   => 'lisa',
+				'compare'    => 'LIKE',
+			);
+		}
+	}
+	$query->set( 'meta_query', $meta_query );
+}
+
+add_action('pre_get_posts','custom_access_restrictor');

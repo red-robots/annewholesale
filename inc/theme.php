@@ -359,6 +359,20 @@ function custom_access_restrictor($query) {
 				'compare'    => 'LIKE',
 			);
 		}
+		if ($id  === 188) {
+			$meta_query[] = array(
+				'key'     => 'bella_associate',
+				'value'   => 'nancy',
+				'compare'    => 'LIKE',
+			);
+		}
+		if ($id  === 241) {
+			$meta_query[] = array(
+				'key'     => 'bella_associate',
+				'value'   => 'amy',
+				'compare'    => 'LIKE',
+			);
+		}
 	}
 	$query->set( 'meta_query', $meta_query );
 }

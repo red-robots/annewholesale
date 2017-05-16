@@ -343,7 +343,8 @@ function custom_access_restrictor($query) {
 	if ( empty( $meta_query ) ) {
 		$meta_query = array();
 	}
-	if ( is_admin() && strcmp($query->get('post_type'),'shop_order')===0) {
+	if ( is_admin() && ((is_array($query->get('post_type')) && in_array('shop_order',$query->get('post_type'))) ||
+	(is_string($query->get('post_type')) && strcmp($query->get('post_type'),'shop_order')===0))) {
 		if ($id === 19 ) {
 			$meta_query[] = array(
 				'key'     => 'bella_associate',
